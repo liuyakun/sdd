@@ -1,0 +1,30 @@
+# Tomcat
+server.port: 8088
+# Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+logging:
+    level:
+        org.hibernate: WARN
+        org.springframework: WARN
+    file: githubApi.log
+# Spring settings
+spring:
+    profiles.active: dev
+    resources.cache-period: 0
+    datasource:
+        url: jdbc:mysql://localhost:3306/sdd?characterEncoding=utf8&useSSL=true
+        username: root
+        password: root
+    jpa:
+        show-sql: false
+        hibernate:
+            # Hibernate DDL  auto: create, create-drop, update, validate
+            ddl-auto: validate
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+            properties:
+                hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+# Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+logging:
+  level:
+      org.hibernate: WARN
+      org.springframework: WARN
+  file: CarNet.log
