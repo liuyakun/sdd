@@ -1,5 +1,5 @@
 # Tomcat
-server.port: 8088
+server.port: 8080
 # Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
 logging:
     level:
@@ -22,9 +22,3 @@ spring:
             naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
             properties:
                 hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
-# Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
-logging:
-  level:
-      org.hibernate: WARN
-      org.springframework: WARN
-  file: CarNet.log

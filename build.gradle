@@ -22,8 +22,6 @@ bootRepackage {
     mainClass = '<%= com.sdd %>.Application'
 }
 
-
-
 sourceCompatibility = 1.8
 sourceCompatibility = 1.8
 
@@ -59,10 +57,6 @@ gradle.projectsEvaluated {
 
 
 bootRun {
-    systemProperties System.getProperties()
-}
-
-test {
     systemProperties System.getProperties()
 }
 

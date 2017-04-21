@@ -1,4 +1,4 @@
-package com.add.entityShow;
+package com.sdd.entityShow;
 
 public class UserShow {
     private Integer id;
