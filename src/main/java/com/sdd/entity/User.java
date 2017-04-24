@@ -60,7 +60,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "staffId", nullable = true, insertable = true, updatable = true, length = 11)
+    @Column(name = "staff_id", nullable = true, insertable = true, updatable = true, length = 11)
     public int getStaffId() {
         return staffId;
     }

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS t_staff_account (
+CREATE TABLE t_staff_account (
   id int(11) NOT NULL AUTO_INCREMENT,
   username varchar(16) DEFAULT NULL COMMENT '用户名',
   password varchar(32) DEFAULT NULL COMMENT '密码',

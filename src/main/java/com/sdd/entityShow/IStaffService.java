@@ -1,10 +1,5 @@
 package com.sdd.entityShow;
 
-
-
-/**
- * Created by wh on 2016/1/21.
- */
 public interface IStaffService {
 
     /**
