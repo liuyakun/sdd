@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String address;
     private String phone;
+    private int staffId;
 
 
     public User(){
@@ -56,5 +57,15 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Basic
+    @Column(name = "staffId", nullable = true, insertable = true, updatable = true, length = 11)
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 }

@@ -15,10 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by 刘亚坤 on 2016/8/15.
- */
 @Service
 public class UserService implements IUserService {
     private UserRepository userRepository = null;
@@ -64,4 +60,17 @@ public class UserService implements IUserService {
         return new PageImpl<UserShow>(list,p,users.getTotalElements());
     }
 
+    /**
+     * 通过userName查询
+     * @param userName 用户名
+     * @return UserShow对象
+     */
+    @Override
+    public UserShow findByUserName(String userName) {
+        User user = userRepository.findByName(userName);
+        if(user != null){
+            return new UserShowEx(user);
+        }
+        return null;
+    }
 }

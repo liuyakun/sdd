@@ -15,4 +15,11 @@ public interface IUserService {
      * @return 用户集合
      */
     Page<UserShow> findByKeys(Integer id, String name, String address, String phone, Integer currentPage, Integer pageSize)throws Exception;
+
+    /**
+     * 通过userName查询员工
+     * @param userName 用户名
+     * @return StaffUserShow对象
+     */
+    UserShow findByUserName(String userName);
 }

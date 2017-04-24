@@ -5,14 +5,16 @@ public class UserShow {
     private String name;
     private String address;
     private String phone;
+    private Integer staffId;
 
     public UserShow() {
     }
 
-    public UserShow(String name, String address, String phone) {
+    public UserShow(String name, String address, String phone,Integer staffId) {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.staffId = staffId;
     }
 
     public Integer getId() {
@@ -45,5 +47,13 @@ public class UserShow {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 }
