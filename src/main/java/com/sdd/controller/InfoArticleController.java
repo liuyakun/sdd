@@ -1,10 +1,10 @@
-package com.hpe.article.controller;
+package com.sdd.controller;
 
-import com.hpe.article.IInfoArticleService;
-import com.hpe.article.InfoArticleShow;
-import com.hpe.controller.ObjectResult;
-import com.hpe.redis.SessionRedis;
-import com.hpe.staff.StaffUserShow;
+import com.sdd.controller.controller.ObjectResult;
+import com.sdd.entityShow.IInfoArticleService;
+import com.sdd.entityShow.InfoArticleShow;
+import com.sdd.entityShow.UserShow;
+import com.sdd.util.SessionRedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by chenhao on 2017/1/17.
  * 资讯文章
  */
 @RestController
@@ -35,10 +34,10 @@ public class InfoArticleController {
     @RequestMapping(value = "/infoArticle", method = RequestMethod.POST)
     public ObjectResult add(@RequestBody InfoArticleShow show,
                             @CookieValue(value = "token_staff", required = false) String token) {
-        StaffUserShow staffUserShow = (StaffUserShow) sessionRedis.getSessionOfList(token);
+        UserShow staffUserShow = (UserShow) sessionRedis.getSessionOfList(token);
         String username = "--";
         if (staffUserShow != null) {
-            username = staffUserShow.getUsername();
+            username = staffUserShow.getName();
         }
         show.setCreateUser(username);
         int add = iInfoArticleService.add(show);
@@ -57,10 +56,10 @@ public class InfoArticleController {
     @RequestMapping(value = "/infoArticle", method = RequestMethod.PUT)
     public ObjectResult update(@RequestBody InfoArticleShow show,
                             @CookieValue(value = "token_staff", required = false) String token) {
-        StaffUserShow staffUserShow = (StaffUserShow) sessionRedis.getSessionOfList(token);
+        UserShow staffUserShow = (UserShow) sessionRedis.getSessionOfList(token);
         String username = "--";
         if (staffUserShow != null) {
-            username = staffUserShow.getUsername();
+            username = staffUserShow.getName();
         }
         show.setModifyUser(username);
         int update = iInfoArticleService.update(show);

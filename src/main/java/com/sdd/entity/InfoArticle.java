@@ -1,11 +1,8 @@
-package com.hpe.article.entity;
+package com.sdd.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by chenhao on 2017/1/17.
- */
 @Entity
 @Table(name="t_info_article")
 public class InfoArticle {
@@ -19,6 +16,7 @@ public class InfoArticle {
     private String tdkDescription;    //描述
     private String tdkTitle;  //标题
     private String tdkKeyword;  //keyword
+    private Integer typeId; //类型ID 1:新闻，2:项目，3:人才招聘
 
 
 
@@ -101,6 +99,14 @@ public class InfoArticle {
 
     public void setTdkKeyword(String tdkKeyword) {
         this.tdkKeyword = tdkKeyword;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Date getCreateDate() {

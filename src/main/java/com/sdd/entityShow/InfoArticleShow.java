@@ -1,10 +1,7 @@
-package com.hpe.article;
+package com.sdd.entityShow;
 
 import java.util.Date;
 
-/**
- * Created by chenhao on 2017/1/17.
- */
 public class InfoArticleShow {
     private Integer id;
     private Integer infoId;  // 资讯栏目id
@@ -16,6 +13,7 @@ public class InfoArticleShow {
     private String tdkDescription;    //描述
     private String tdkTitle;  //标题
     private String tdkKeyword;  //keyword
+    private Integer typeId; //类型ID 1:新闻，2:项目，3:人才招聘
 
 
 
@@ -95,6 +93,14 @@ public class InfoArticleShow {
 
     public void setTdkKeyword(String tdkKeyword) {
         this.tdkKeyword = tdkKeyword;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Date getCreateDate() {

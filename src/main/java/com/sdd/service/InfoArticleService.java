@@ -1,12 +1,11 @@
-package com.hpe.article.service;
+package com.sdd.service;
 
-import com.hpe.article.IInfoArticleService;
-import com.hpe.article.IInfoSectionService;
-import com.hpe.article.InfoArticleShow;
-import com.hpe.article.InfoSectionShow;
-import com.hpe.article.entity.InfoArticle;
-import com.hpe.article.repository.InfoArticleRepository;
-import com.hpe.article.util.InfoArticleUtil;
+
+import com.sdd.entity.InfoArticle;
+import com.sdd.entityShow.IInfoArticleService;
+import com.sdd.entityShow.InfoArticleShow;
+import com.sdd.entityVo.InfoArticleUtil;
+import com.sdd.repository.InfoArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,10 +26,6 @@ public class InfoArticleService implements IInfoArticleService {
     @Autowired
     private InfoArticleRepository infoArticleRepository;
 
-    @Autowired
-    private IInfoSectionService iInfoSectionService;
-
-
     /**
      * 新增
      * @param show
@@ -42,10 +37,6 @@ public class InfoArticleService implements IInfoArticleService {
         infoArticle.setCreateDate(new Date());
         Integer infoId = show.getInfoId();
         infoArticle.setIsEnable("1");
-        InfoSectionShow byId = iInfoSectionService.getById(infoId);
-        if(byId==null){
-            return 2;
-        }
 
         InfoArticle save = infoArticleRepository.save(infoArticle);
         return 1;

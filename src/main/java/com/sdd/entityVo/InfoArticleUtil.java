@@ -1,11 +1,9 @@
-package com.hpe.article.util;
+package com.sdd.entityVo;
 
-import com.hpe.article.InfoArticleShow;
-import com.hpe.article.entity.InfoArticle;
 
-/**
- * Created by chenhao on 2017/1/17.
- */
+import com.sdd.entity.InfoArticle;
+import com.sdd.entityShow.InfoArticleShow;
+
 public class InfoArticleUtil {
 
     public static InfoArticle show2InfoArticle(InfoArticleShow show){
@@ -18,6 +16,7 @@ public class InfoArticleUtil {
         infoArticle.setContent(show.getContent());
         infoArticle.setTdkDescription(show.getTdkDescription());
         infoArticle.setTdkKeyword(show.getTdkKeyword());
+        infoArticle.setTypeId(show.getTypeId());
         infoArticle.setTdkTitle(show.getTdkTitle());
         infoArticle.setCreateDate(show.getCreateDate());
         infoArticle.setCreateUser(show.getCreateUser());
@@ -37,6 +36,7 @@ public class InfoArticleUtil {
         show.setContent(infoArticle.getContent());
         show.setTdkDescription(infoArticle.getTdkDescription());
         show.setTdkKeyword(infoArticle.getTdkKeyword());
+        show.setTypeId(infoArticle.getTypeId());
         show.setTdkTitle(infoArticle.getTdkTitle());
         show.setCreateDate(infoArticle.getCreateDate());
         show.setCreateUser(infoArticle.getCreateUser());

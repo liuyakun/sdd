@@ -1,6 +1,6 @@
-package com.hpe.article.repository;
+package com.sdd.repository;
 
-import com.hpe.article.entity.InfoArticle;
+import com.sdd.entity.InfoArticle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +15,5 @@ public interface InfoArticleRepository extends JpaRepository<InfoArticle,Integer
 
     @Query(value = "select info from  InfoArticle info where  (?1 is null or info.name = concat('%',concat(?1,'%') ))  " +
             " and (?2 is null or info.infoId = ?2)")
-    Page<InfoArticle> page(String name,Integer infoId,Pageable p);
+    Page<InfoArticle> page(String name, Integer infoId, Pageable p);
 }
