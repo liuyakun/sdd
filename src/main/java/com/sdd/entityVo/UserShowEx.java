@@ -9,5 +9,6 @@ public class UserShowEx extends UserShow {
         this.setName(user.getName());
         this.setAddress(user.getAddress());
         this.setPhone(user.getPhone());
+        this.setStaffId(user.getStaffId());
     }
 }

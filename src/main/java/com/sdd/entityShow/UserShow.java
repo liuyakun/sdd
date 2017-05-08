@@ -1,6 +1,8 @@
 package com.sdd.entityShow;
 
-public class UserShow {
+import java.io.Serializable;
+
+public class UserShow implements Serializable {
     private Integer id;
     private String name;
     private String address;
