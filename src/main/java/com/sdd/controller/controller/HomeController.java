@@ -16,4 +16,14 @@ public class HomeController {
         return "forward:/index.html";
     }
 
+
+    /**
+     * 静态页面处理程序
+     * 管理主页面
+     * @return 返回HTML静态页面
+     */
+    @RequestMapping(path={"/mge", "/mge/**"}, method = RequestMethod.GET)
+    public String forwardMge() {
+        return "forward:/indexMge.html";
+    }
 }
