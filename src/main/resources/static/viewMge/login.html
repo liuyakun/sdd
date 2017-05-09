@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="loginApp">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -73,14 +73,68 @@ input{
 </head>
 
 <body >
-    <div id="login" ng-controller="loginCtrl as lc">
-        <h1>Login</h1>  
+    <div id="login" ng-controller="loginInfoCtrl as lc">
+        <h1>Login</h1>
         <form>
             <input type="text" required="required" placeholder="用户名" name="u" ng-model="lc.loginData.username"></input>
             <input type="password" required="required" placeholder="密码" name="p" ng-model="lc.passwordDisplay"></input>
             <button class="but" ng-click="lc.login();">登录</button>
         </form>  
-    </div>  
+    </div>
 
+    <script src="../script/lib/js-md5/js/md5.js"></script>
+    <script src="../script/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../script/lib/angular/angular.min.js"></script>
+    <script src="../script/lib/angular-resource/angular-resource.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module('loginApp',['ngResource']);
+        app.controller('loginInfoCtrl',function($scope,$resource,$location,$http){
+            //获取cookie
+            var getCookie = function(name){
+                var arr = document.cookie.split("; ");
+                for(var i=0,len=arr.length;i<len;i++){
+                    var item = arr[i].split("=");
+                    if(item[0]==name){
+                        return item[1];
+                    }
+                }
+                return "";
+            };
+
+            var loginCookie = getCookie('token_staff');//获取token
+            if(loginCookie !== ""){
+                window.location.href='/mge';
+            }
+
+            this.loginData = {
+                username:'',
+                password:'',
+            };  //登录信息
+            this.passwordDisplay = ''; //显示的密码
+            var _this = this;
+
+            //用户登录
+            var loginApi = $resource("/api/staff/login");  //登录
+            this.login = function(){
+                if(this.loginData.username === ''){
+                    return;
+                }
+                if(this.passwordDisplay === ''){
+                    return;
+                }
+                this.loginData.password = md5(this.passwordDisplay);
+                loginApi.save(this.loginData,function(data){
+                    if(data.status == 'true'){
+                        window.location.href='/mge';
+                    } else {
+                        console.log(data);
+                    }
+                });
+            };
+        });
+    </script>
 </body>
+
+
 </html>

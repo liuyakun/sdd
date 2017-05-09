@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+/* l-公共模板 */
+.l-header{height:50px;width:100%;background:#033029;z-index:4;position:fixed;}
+.l-lrmain{background-color: #fff;z-index:0;width:100%;min-width:1000px;overflow-x:auto;}
+.l-left{z-index:1;position:fixed;background:#074135;height:100%;width:200px;overflow:hidden;overflow-y:auto;}
+ul.l-nav{width:180px;margin-top:50px;}
+ul.l-nav li a.first{color:#fff;}
+.l-left-shade{width:20px;height:100%;position:fixed;background:#fff;left:180px;z-index:1;}
+.l-right{margin-left:180px;height:100%;z-index:0;position:relative;background:#fff;margin-top:50px;}
+.l-right .l-ngview{margin:0 20px;min-height:600px;}
+.l-right .l-ngviewinner{z-index:3;}
+/* 内容.页尾部分 */
+.l-loginfooter{width:100%;}
+/* 内容.面包屑 */
+.l-breadcrumb{width:100%;border-bottom:1px #e0e0e0 solid;line-height:30px;padding:17px 0;}
+.l-breadcrumb span.left{padding-left:10px;border-left:3px #f1c71d solid;font-size:14px;line-height:20px;margin-top:5px;margin-bottom:5px;}
+.l-breadcrumb a.rightbtn{display:block;width:auto;min-width:100px;text-align:center;font-size:12px;line-height:14px;border:1px solid #fff;color:#5e87b0;background:#daeafb;padding:8px 10px;}
+.l-breadcrumb a.rightbtn:hover{background:#fff;color:#5e87b0;border-color:#daeafb;}
+table.main{border:1px #ccc solid;margin-top:10px;width:100%;text-align:center;background:#fff;}
+table.main thead{background:#f2f2f2;}
+table.main thead tr td{color:#999;font-size:12px;padding:4px 5px;line-height:30px;white-space:nowrap;}
+table.main tbody tr td{color:#666;font-size:12px;padding:8px 8px;line-height:22px;}
+table.main tbody tr td a.link{color:#3D94EA;padding:0 5px;}
+table.main tbody tr td a.link:hover{color:#09498A;text-decoration:underline !important;}
+table.main tbody tr:nth-child(odd){background-color:#fcfcfc;}

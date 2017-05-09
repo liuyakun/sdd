@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name="t_info_article")
 public class InfoArticle {
     private Integer id;
-    private Integer infoId;  // 资讯栏目id
+    private Integer infoId;  //类型ID 1:新闻，2:项目，3:人才招聘
     private String title;  //标题
     private String bigTitle;  //大标题
     private String name;  //文章名称
@@ -16,7 +16,7 @@ public class InfoArticle {
     private String tdkDescription;    //描述
     private String tdkTitle;  //标题
     private String tdkKeyword;  //keyword
-    private Integer typeId; //类型ID 1:新闻，2:项目，3:人才招聘
+    private Integer typeId;
 
 
 

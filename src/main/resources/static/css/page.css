@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* 分页样式 */
+.x-pagination{width:270px;height:22px;z-index:0;}
+.x-pagination a.x-page{float:right;width:80px;display:block;background:#ece9e9;color:#939393;line-height:22px;height:22px;text-align:center;font-size:12px;}
+.x-pagination a.x-page:hover{color:#fbce00;}
+.x-pagination a.enable{color:#ccc;}
+.x-pagination a.enable:hover{cursor:not-allowed;color:#ccc;}
+.x-pagination a.x-page b.x-pagetips{margin-top:8px;margin-right:10px;position:relative;}
+.x-pagination .x-page-select{width:80px;height:auto;display:block;position: absolute;margin-top:22px;margin-left:100px;background:#ece9e9;margin-bottom:100px;z-index: 2;overflow:hidden;overflow-y:auto;max-height:110px;}
+.x-pagination .x-page-select a{width:auto;display:block;height:22px;line-height:22px;color:#939393;font-size:12px;text-align:center;padding-right:4px;}
+.x-pagination .x-page-select a.cur{background:#fbce00;color:#fff;}
+.x-pagination .x-page-select a.cur:hover{background:#fbce00;color:#fff;}
+.x-pagination .x-page-select a:hover{color:#fbce00;background:#ece9e9;}
+
+.fr{float:right !important;}
+.clear{clear: both;}
+.clearfix{overflow: hidden;zoom:1;}
+
+.mrright10{margin-right:10px !important;}
+/*.x-icons{background:url(../images/icons01.png) no-repeat;}*/
+
+
+/* 删除弹出框 */
+.mgr-x-modalbg{background:url(../../images/modalbg.png) 100% 100%;width:100%;height:100%;position:fixed;left:0;top:0;right:0;left:0;z-index:1000;overflow-y: auto;}
+.mgr-x-modalbg .mgr-x-modal{width:450px;margin:0 auto;margin-top:13%;background:#f3f3f3;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;padding:22px;}
+.mgr-x-modalbg .mgr-x-modal .tit{padding:0 14px;height:26px;line-height:26px;background:#cccccc;color:#fff;text-align:center;border-radius:13px;-moz-border-radius:13px;-webkit-border-radius:13px;}
+.mgr-x-modalbg .mgr-x-modal .main{background:#fff;color:#666;margin:12px auto;padding:10px 0;}
+.mgr-x-modalbg .mgr-x-modal .main .x-h5{padding:15px 15px;}
+.mgr-x-modalbg .mgr-x-modal .main .x-h5 i{margin:0 4px;font-size:14px;color:#cccccc;}
+.mgr-x-modalbg .mgr-x-modal .footer{width:146px;}
+.mgr-x-modalbg .mgr-x-modal .footer a{width:65px;display:block;float:left;background:#959396;color:#fff;height:22px;line-height:22px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;margin-left:8px;text-align:center;}
+.mgr-x-modalbg .mgr-x-modal .footer a.blue{background:#fbce00;}
+.mgr-x-modalbg .mgr-x-modal .footer a:hover{filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity:0.8;opacity:0.8;}
+
+.mgr-x-modalbg .mgr-x-modal table{border:0;margin-top:10px;margin-bottom:20px;width:100%;text-align:center;background:#fff;border-radius:4px;}
+.mgr-x-modalbg .mgr-x-modal table thead{border:1px solid #a8bc7b;}
+.mgr-x-modalbg .mgr-x-modal table thead tr td{color:#fff;font-size:12px;padding:4px 5px;line-height:30px;background:#a8bc7b;}
+.mgr-x-modalbg .mgr-x-modal table thead tr td a{color:#5f5f5f;padding:0 5px;}
+.mgr-x-modalbg .mgr-x-modal table thead tr td a:hover{color:#005a9a;}
+.mgr-x-modalbg .mgr-x-modal table thead tr td a i{margin:12px 4px;cursor:pointer;}
+.mgr-x-modalbg .mgr-x-modal table tbody{border-left:1px solid #ececec;border-right:1px solid #ececec;}
+.mgr-x-modalbg .mgr-x-modal table tbody tr td{border-bottom:1px solid #ececec;color:#666;font-size:12px;padding:8px 2px;line-height:22px;}
+.mgr-x-modalbg .mgr-x-modal table tbody tr td a.mgr-deletebtn{color:#3D94EA;padding:0 5px;}
+.mgr-x-modalbg .mgr-x-modal table tbody tr td a.mgr-deletebtn:hover{color:#09498A;text-decoration:underline !important;}
+.mgr-x-modalbg .mgr-x-modal table tbody tr td a.blockbtn{display:block;font-size:12px;width:80px;color:#666;text-align:center;background:#cbd7b3;line-height:26px;margin:0 auto;}
+.mgr-x-modalbg .mgr-x-modal .main .mgr-x-seo{width:100%;height:auto;line-height:30px;}
+.mgr-x-modalbg .mgr-x-modal .main .mgr-x-seo span.title{margin-top:10px;height:30px;line-height:30px;font-size:12px;text-align:right;float:left;margin-right:5px;}
+.mgr-x-modalbg .mgr-x-modal .main .mgr-x-seo a.mgr-searchbtn{display:block;width:80px;text-align:center;font-size:12px;line-height:28px;border:1px solid #dbdbdb;color:#5f5f5f;background:#f4f4f4;}
+.mgr-x-modalbg .mgr-x-modal .main .mgr-x-seo a.mgr-searchbtn:hover{background:#efeded;color:#5f5f5f;border-color:#dbdbdb;}
+
+
+
+.mgr-x-modalbg .mgr-x-modal table tbody tr td a.btnsselect{display:block;width:50px;height:26px;line-height:26px;text-align: center;color:#fff;font-size:12px;background:#fbce00;}
+.clearfix{overflow: hidden;zoom:1;}

@@ -22,8 +22,18 @@ public class HomeController {
      * 管理主页面
      * @return 返回HTML静态页面
      */
-    @RequestMapping(path={"/mge", "/mge/**"}, method = RequestMethod.GET)
+    @RequestMapping(path={"/mge/**"}, method = RequestMethod.GET)
     public String forwardMge() {
         return "forward:/indexMge.html";
+    }
+
+    /**
+     * 静态页面处理程序
+     * 管理主页面
+     * @return 返回HTML静态页面
+     */
+    @RequestMapping(path={"/mge/login"}, method = RequestMethod.GET)
+    public String loginMge() {
+        return "forward:/viewMge/login.html";
     }
 }

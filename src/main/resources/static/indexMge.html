@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,79 @@
 
     <title>SDD</title>
 
+    <link href="/css/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/global.css" rel="stylesheet">
+    <link href="/css/mppublic.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/page.css" rel="stylesheet">
+
+    <base href="/indexMge.html" />
+
 </head>
 <body ng-controller="indexMgeCtrl as ic">
-    <div ng-show="isLogin">
+    <div>
+        <div class="l-header clearfix">
+            <div class="l-logo fl"><i class="x-icons x-icons-logo x-h1"></i></div>
+            <div class="l-firstnav fl clearfix">
+                <div class="fl">
+                    <!-- <a class="da"></a> -->
+                </div>
+                <div class="fl">
+                    <i class="icons02 icons02-iconav"></i>
+                </div>
+            </div>
+             <span class="l-navdropdown">
+                <a></a>
+            </span>
+            <div class="l-header-right fr">
+                <a class="x-h6"><i class="color38 mr8"></i>xxx,欢迎您！</a>
+                <a ><i class="x-h5 mrleft10"></i></a>
+                <a class="mrleft20 out">登出</a>
+            </div>
+        </div>
+        <div class="l-lrmain clearfix">
 
+            <div class="l-left clearfix">
+
+                <ul class="layui-nav layui-nav-tree l-nav">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="/mge/news">新闻管理</a>
+                        <!--<dl class="layui-nav-child">
+                            <dd><a href="">选项1</a></dd>
+                            <dd><a href="">选项2</a></dd>
+                        </dl>-->
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="">项目管理</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="">修改密码</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="l-left-shade"></div>
+
+
+
+            <div class="l-right">
+
+                <div class="l-ngview">
+                    <div class="l-ngviewinner">
+                        <div ng-view="" ></div>
+                    </div>
+                </div>
+
+                <div class="l-loginfooter">
+                    <div class="tcenter" ng-show="isLogin">
+                        <p>Copyright@ 新大地</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div ng-view="" ></div>
+
 </body>
 
 
