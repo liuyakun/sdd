@@ -10,6 +10,9 @@ requirejs.config({
         bootstrapDateTimePicker:"/script/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min",
         bootstrapDateTimePickerCN:"/script/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
         flot:"/script/lib/flot/jquery.flot",
+        ueditorConfig:"/script/lib/ueditor-bower/ueditor.config",
+        ueditorAll:"/script/lib/ueditor-bower/ueditor.all.min",
+        ZeroClipboard:"/script/lib/ueditor-bower/third-party/zeroclipboard/ZeroClipboard"
     },
     shim:{
         jquery: { exports: '$' },

@@ -1,4 +1,4 @@
-define(['angular','routesMge','../script/service/dependencyResolverFor','angularResource','angularRoute','bootstrap'], function(angular, config, dependencyResolverFor)
+define(['angular','routesMge','../script/service/dependencyResolverFor','angularResource','angularRoute','bootstrap','ueditorConfig','ueditorAll'], function(angular, config, dependencyResolverFor)
 {
     var app = angular.module('mge', [ 'ngResource', 'ngRoute']);
     app.config(

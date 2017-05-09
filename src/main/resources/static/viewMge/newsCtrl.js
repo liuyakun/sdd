@@ -1,9 +1,10 @@
 /**
  * Created by 刘亚坤
  */
-define(['../script/mge','jquery','../script/service/infoArticleService','../viewMge/myPagination'],function(module, $, InfoArticleService){
+define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleService','../viewMge/myPagination'],function(module, $, zeroClipboard, InfoArticleService){
     module.controller('newsCtrl',function($resource,$scope,$rootScope,$timeout,$location,mgeService){
         // console.log("news");
+        window['ZeroClipboard'] = zeroClipboard;
         var infoArticleService = new InfoArticleService($resource);
         var _this = this;
 
@@ -74,6 +75,10 @@ define(['../script/mge','jquery','../script/service/infoArticleService','../view
         //点击新增
         $("#addShow").hide();
         this.checkAdd = function(){
+            this.addNewsData = {};
+            ue.ready(function(){
+                ue.setContent("");
+            });
             $("#addShow").slideDown("slow");
             $("#listShow").slideUp("slow");
         };
@@ -81,6 +86,30 @@ define(['../script/mge','jquery','../script/service/infoArticleService','../view
             $("#listShow").slideDown("slow");
             $("#addShow").slideUp("slow");
         };
+
+        UE.delEditor('container');
+        var ue = UE.getEditor( 'container', {
+            autoHeightEnabled: false,
+            autoFloatEnabled: false,
+            elementPathEnabled:false,
+            initialFrameHeight:483
+        });
+
+        //新增新闻
+        this.addNewsData = {};
+        this.addNews = function(){
+            this.addNewsData.content =ue.getContent();
+            infoArticleService.addInfoArticle(this.addNewsData,function(data){
+                if(data.status === "true"){
+                    _this.pageInfoArticle();
+                    _this.addReturn();
+                }else{
+                    console.log(data);
+                }
+            });
+
+        };
+        //-----------------------------------------------------------新增end---------------------------------------------------
 
     });
 });

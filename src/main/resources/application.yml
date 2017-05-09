@@ -1,6 +1,10 @@
 # Tomcat
 server.port: 12345
 # Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+
+spring.mvc.view.prefix: /WEB-INF/jsp/
+spring.mvc.view.suffix: .jsp
+
 logging:
     level:
         org.hibernate: WARN

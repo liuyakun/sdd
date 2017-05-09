@@ -1,4 +1,33 @@
 @charset "utf-8";
+
+/*margin*/
+.mrtop5{margin-top: 5px;}
+.mrtop8{margin-top: 8px;}
+.mrtop10{margin-top: 10px;}
+.mrtop20{margin-top: 20px;}
+.mrtop30{margin-top: 30px;}
+.mrtop40{margin-top: 40px;}
+.mrtop50{margin-top: 50px;}
+.mrtop60{margin-top: 60px;}
+.mrbom10{margin-bottom: 10px;}
+.mrbom20{margin-bottom: 20px;}
+.mrbom30{margin-bottom: 30px;}
+.mrbom40{margin-bottom: 40px;}
+.mrbom50{margin-bottom: 50px;}
+.mrbom60{margin-bottom: 60px;}
+.mrleft10{margin-left: 10px;}
+.mrleft20{margin-left: 20px;}
+.mrleft30{margin-left: 30px;}
+.mrleft40{margin-left: 40px;}
+.mrleft50{margin-left: 50px;}
+.mrleft60{margin-left: 60px;}
+.mrright10{margin-right: 10px;}
+.mrright20{margin-right: 20px;}
+.mrright30{margin-right: 30px;}
+.mrright40{margin-right: 40px;}
+.mrright50{margin-right: 50px;}
+.mrright60{margin-right: 60px;}
+
 /* 分页样式 */
 .x-pagination{width:270px;height:22px;z-index:0;}
 .x-pagination a.x-page{float:right;width:80px;display:block;background:#ece9e9;color:#939393;line-height:22px;height:22px;text-align:center;font-size:12px;}
@@ -52,3 +81,9 @@
 
 .mgr-x-modalbg .mgr-x-modal table tbody tr td a.btnsselect{display:block;width:50px;height:26px;line-height:26px;text-align: center;color:#fff;font-size:12px;background:#fbce00;}
 .clearfix{overflow: hidden;zoom:1;}
+
+
+.mgr-modify-btns{width:200px;height:26px;line-height:26px;margin:20px auto 40px;}
+.mgr-modify-btns a{display:block;width:78px;height:26px;line-height:26px;background: #f4f4f4;float:left;color:#2e2d2a;;text-align:center;border: 1px solid #dbdbdb;}
+.mgr-modify-btns a:hover{filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity:0.8;opacity:0.8;}
+.mgr-modify-btns a.breadcrumb{color: #5e87b0;background: #daeafb;border: 1px solid #fff;}

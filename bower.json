@@ -13,7 +13,8 @@
     "bootstrap-datetimepicker": "https://github.com/Septemberwh/bootstrap-datetimepicker.git#^2.3.12",
     "ajaxfileupload": "^1.0.0",
     "flot": "flot#^0.8.3",
-    "vue": "^2.2.6"
+    "vue": "^2.2.6",
+    "ueditor-bower": "^1.4.3"
   },
   "devDependencies": {
     "chai": "~3.4.2"
