@@ -19,7 +19,7 @@
                 <td ng-bind="nl.title"></td>
                 <td ng-bind="nl.createDate | date:'yyyy-MM-dd hh:mm:ss'"></td>
                 <td>
-                    <a href="" class="link">编辑</a> |
+                    <a href="" class="link" ng-click="nc.checkUpdate(nl);">编辑</a> |
                     <a class="link" ng-click="nc.checkDelete(nl.id);">删除</a>
                 </td>
             </tr>
@@ -58,7 +58,29 @@
 
     <!--修改-->
     <div id="updateShow">
+        <div class="l-breadcrumb clearfix">
+            <span class="left fl">新闻列表-修改</span>
+            <a href="" class="rightbtn fr" ng-click="nc.updateReturn();">返回</a>
+        </div>
+        <div class="" style="padding-top: 20px">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
+            <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"/>
+        </div>
+        <div class="" style="padding-top: 60px">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
+            <div style="padding-top: 20px">
+                <h5 class="clearfix">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="updateContainer" name="content" type="text/plain" style="width:100%;"></script>
+                    <!--<i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="amc.contentShow">文章内容不能为空</i>-->
+                </h5>
+            </div>
+        </div>
 
+        <div class="mgr-modify-btns">
+            <a class="mrright40 breadcrumb" ng-click="nc.updateNews();">确定</a>
+            <a ng-click="nc.updateReturn();">取消</a>
+        </div>
     </div>
     <!--修改end-->
 

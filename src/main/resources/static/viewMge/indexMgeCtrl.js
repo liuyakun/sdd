@@ -10,6 +10,7 @@ define(['../script/mge','jquery','../script/service/loginService'],function(modu
             loginService.loginInfo(loginCookie, function (data) {
                 if (data.status == "true") {
                     _this.userInfo = data.message;
+                    // console.log(data);
                 } else {
                     mgeService.deleteCookie("token_staff");
                     window.location.href='/mge/login';
@@ -34,6 +35,17 @@ define(['../script/mge','jquery','../script/service/loginService'],function(modu
             $rootScope.loginCookie = loginCookie;
             this.loginInfo(loginCookie, false);
         }
+
+
+        //注销登录
+        this.loginOut = function(){
+            loginService.loginOut(function(data){
+                if (data.status == "false") {
+                    mgeService.deleteCookie("token_staff");
+                }
+                window.location.href = "/mge/login";
+            });
+        };
 
     });
 });

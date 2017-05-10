@@ -5,6 +5,7 @@ define([], function() {
     function LoginService($resource) {
         this.loginApi = $resource('/api/staff/login');//通过用户名和密码登录
         this.loginInfoApi = $resource('/api/staff/login/:token_staff'); //通过token登陆
+        this.loginOutApi = $resource('/api/staff/logout'); //注销登录
     }
 
     //通过用户名和密码登录
@@ -19,6 +20,15 @@ define([], function() {
     //通过token登陆
     LoginService.prototype.loginInfo = function(token_staff,cb){
         this.loginInfoApi.get({token_staff:token_staff},function(data){
+            cb(data);
+        },function(errData){
+            cb(errData.data.error);
+        })
+    };
+
+    //通过token登陆
+    LoginService.prototype.loginOut = function(cb){
+        this.loginOutApi.remove(function(data){
             cb(data);
         },function(errData){
             cb(errData.data.error);

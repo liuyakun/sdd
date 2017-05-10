@@ -36,7 +36,6 @@ public class InfoArticleService implements IInfoArticleService {
         InfoArticle infoArticle = InfoArticleUtil.show2InfoArticle(show);
         infoArticle.setCreateDate(new Date());
         Integer infoId = show.getInfoId();
-        infoArticle.setInfoId(1);
         infoArticle.setIsEnable("1");
 
         InfoArticle save = infoArticleRepository.save(infoArticle);

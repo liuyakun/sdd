@@ -98,6 +98,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //新增新闻
         this.addNewsData = {};
         this.addNews = function(){
+            this.addNewsData.infoId = 1;
             this.addNewsData.content =ue.getContent();
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
@@ -110,6 +111,45 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
         };
         //-----------------------------------------------------------新增end---------------------------------------------------
+
+        //----------------------------------------------------------修改-------------------------------------------------------
+        //点击修改
+        $("#updateShow").hide();
+        this.checkUpdate = function (updateData) {
+            $scope.updateData = angular.copy(updateData);
+            ueModify.ready(function(){
+                ueModify.setContent(updateData.content);
+            });
+            $("#updateShow").slideDown("slow");
+            $("#listShow").slideUp("slow");
+        };
+
+        this.updateReturn = function(){
+            $("#listShow").slideDown("slow");
+            $("#updateShow").slideUp("slow");
+        };
+
+        UE.delEditor('updateContainer');
+        var ueModify = UE.getEditor( 'updateContainer', {
+            autoHeightEnabled: false,
+            autoFloatEnabled: false,
+            elementPathEnabled:false,
+            initialFrameHeight:483
+        });
+
+        //确认修改
+        this.updateNews = function(){
+            console.log($scope.updateData);
+            $scope.updateData.content = ueModify.getContent();
+            infoArticleService.updateInfoArticle($scope.updateData,function(data){
+                if(data.status === "true"){
+                    _this.pageInfoArticle();
+                    _this.updateReturn();
+                }else{
+                    console.log(data);
+                }
+            });
+        };
 
     });
 });
