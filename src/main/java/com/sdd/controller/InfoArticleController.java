@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 资讯文章
+ * 新闻管理
  */
 @RestController
 @RequestMapping(value = "/api")

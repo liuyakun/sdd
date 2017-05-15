@@ -42,7 +42,7 @@
             <div class="l-left clearfix">
 
                 <ul class="layui-nav layui-nav-tree l-nav">
-                    <li class="layui-nav-item layui-nav-itemed">
+                    <li class="layui-nav-item" ng-class="{true:'layui-nav-itemed'}[stayUrl === 1]">
                         <a href="/mge/news">新闻管理</a>
                         <!--<dl class="layui-nav-child">
                             <dd><a href="">选项1</a></dd>
@@ -52,8 +52,8 @@
                     <li class="layui-nav-item">
                         <a href="">项目管理</a>
                     </li>
-                    <li class="layui-nav-item">
-                        <a href="">修改密码</a>
+                    <li class="layui-nav-item" ng-class="{true:'layui-nav-itemed'}[stayUrl === 3]">
+                        <a href="/mge/modifyPwd">修改密码</a>
                     </li>
                 </ul>
             </div>

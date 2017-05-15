@@ -18,6 +18,7 @@ public class InfoArticle {
     private String tdkKeyword;  //keyword
     private Integer typeId;
 
+    private String filePath; //项目文件地址
 
 
     private Date createDate;  //创建时间
@@ -107,6 +108,14 @@ public class InfoArticle {
 
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public Date getCreateDate() {

@@ -15,7 +15,7 @@ public class InfoArticleShow {
     private String tdkKeyword;  //keyword
     private Integer typeId; //类型ID 1:新闻，2:项目，3:人才招聘
 
-
+    private String filePath; //项目图片地址
 
     private Date createDate;  //创建时间
     private Date modifyDate;  //修改时间
@@ -141,5 +141,13 @@ public class InfoArticleShow {
 
     public void setIsEnable(String isEnable) {
         this.isEnable = isEnable;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }

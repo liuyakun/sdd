@@ -2,6 +2,7 @@ define(['../script/mge','jquery','../script/service/loginService'],function(modu
     module.controller("indexMgeCtrl",function($rootScope,$scope,$http,$resource,$location,$route,$timeout,mgeService) {
 
         var _this =this;
+        $rootScope.stayUrl = 0;
 
         //通过token获得用户信息
         var loginService = new LoginService($resource);
@@ -10,6 +11,7 @@ define(['../script/mge','jquery','../script/service/loginService'],function(modu
             loginService.loginInfo(loginCookie, function (data) {
                 if (data.status == "true") {
                     _this.userInfo = data.message;
+                    $rootScope.userInfo = data.message;
                     // console.log(data);
                 } else {
                     mgeService.deleteCookie("token_staff");

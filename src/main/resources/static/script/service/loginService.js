@@ -6,6 +6,7 @@ define([], function() {
         this.loginApi = $resource('/api/staff/login');//通过用户名和密码登录
         this.loginInfoApi = $resource('/api/staff/login/:token_staff'); //通过token登陆
         this.loginOutApi = $resource('/api/staff/logout'); //注销登录
+        this.modifyPasswordOfStaffApi = $resource('/api/staff/:sid/pwd',null,{'update':{method:'PUT'}}); //修改密码
     }
 
     //通过用户名和密码登录
@@ -26,13 +27,23 @@ define([], function() {
         })
     };
 
-    //通过token登陆
+    //注销登录
     LoginService.prototype.loginOut = function(cb){
         this.loginOutApi.remove(function(data){
             cb(data);
         },function(errData){
             cb(errData.data.error);
         })
+    };
+
+    //修改密码
+    LoginService.prototype.modifyStaffPwd = function(sid,staff,cb){
+        this.modifyPasswordOfStaffApi.update({sid:sid},staff,function(data){
+            cb(data);
+        },function(errData){
+            cb(errData.data.error);
+        })
+
     };
 
     return LoginService;

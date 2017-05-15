@@ -1,0 +1,55 @@
+<div ng-controller="modifyPwdCtrl as vdc">
+    <div class="l-breadcrumb clearfix">
+        <span class="left fl">修改密码</span>
+        <!--<a href="" class="rightbtn fr" ng-click="nc.checkAdd();">新增</a>-->
+    </div>
+
+    <form name="updateVendorStaffForm">
+        <div class="x-blockmain-fff01">
+
+            <!--<div class="l-add100div">
+                <div class="one clearfix">
+                    <span class="tit">密码：</span>
+                    <span class="main">
+                        <input type="password" class="long wth40" name="oldPassword" ng-model="vdc.updateVendorHideStaffData.oldPassword" required ng-trim="true">
+                    </span>
+                </div>
+                <i class="mgr-x-tips"
+                   ng-show="updateVendorStaffForm.oldPassword.$error.required && vdc.updatePasswordNull">旧密码不能为空！</i>
+            </div>-->
+
+            <div class="l-add100div">
+                <div class="one clearfix">
+                    <span class="tit">新密码：</span>
+                    <span class="main">
+                        <input type="password" class="long wth40" name="password"
+                               ng-model="vdc.updateVendorHideStaffData.password"
+                               ng-pattern="passwordPattern" required ng-trim="true">
+                    </span>
+                </div>
+                <i class="mgr-x-tips"
+                   ng-show="updateVendorStaffForm.password.$error.required && vdc.updatePasswordNull">新密码不能为空！</i>
+                <i class="mgr-x-tips"
+                   ng-show="updateVendorStaffForm.password.$error.pattern">以字母开头，长度在6~32之间！</i>
+
+            </div>
+        </div>
+        <div class="mgr-modify-btns">
+            <a href="" class="mrright40 yellow"
+               ng-click="vdc.modifyVendorStaffPwd(updateVendorStaffForm.$valid);">保存</a>
+            <!--<a href="" ng-click="vdc.passwordShow=false;">取消</a>-->
+        </div>
+    </form>
+
+    <div class="mgr-x-modalbg" id="errorId">
+        <div class="mgr-x-modal clearfix">
+            <div class="tit fl">提示</div>
+            <div class="mgr-icons mgr-icons-close fr"></div>
+            <div class="clear"></div>
+            <div class="main">
+                <div class="x-h5" ng-bind="errorInfo"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

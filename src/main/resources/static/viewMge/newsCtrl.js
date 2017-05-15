@@ -7,6 +7,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         window['ZeroClipboard'] = zeroClipboard;
         var infoArticleService = new InfoArticleService($resource);
         var _this = this;
+        $rootScope.stayUrl = 1;
 
         //--------------------------------------------------列表------------------------------------------------------
         //获取新闻列表
