@@ -8,6 +8,10 @@ define([], function () {
             '/mge/modifyPwd':{
                 templateUrl: '/viewMge/modifyPwd.html',
                 dependencies: ['../viewMge/modifyPwdCtrl']
+            },
+            '/mge/projectManage':{
+                templateUrl: '/viewMge/projectManage.html',
+                dependencies: ['../viewMge/projectManageCtrl']
             }
         }
     };

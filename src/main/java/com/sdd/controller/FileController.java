@@ -28,8 +28,6 @@ public class FileController {
                             HttpServletRequest request) {
         //设置相对路径
         String realPath = request.getSession().getServletContext().getRealPath("/upload");
-        //获取文件的格式
-        String extention = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
         File f = new File(realPath);
         String fileName = file.getOriginalFilename();
         String uploadPath = realPath + File.separator + fileName;
