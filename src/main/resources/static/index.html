@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="keywords" content="sdd" />
+    <meta name="author" content="YY-MO"  />
+    <link type="text/css" href="/css/home/style.css" rel="stylesheet">
+    <link type="text/css" href="/css/home/index.css" rel="stylesheet">
 
-    <title>SDD</title>
-
-    <link href="/script/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/script/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
+    <title>新大地</title>
     <base href="/index.html" />
 
 </head>
 <body ng-controller="indexCtrl as ic">
-        <ul class="nav nav-pills">
-            <li role="presentation" ng-class="{active:mainMenuIndex==0}"><a href="/" ng-click="changeMainMenu(0)">Home</a></li>
-            <li role="presentation" ng-class="{active:mainMenuIndex==1}"><a href="/web/test001" ng-click="changeMainMenu(1)">test001</a></li>
-            <li role="presentation" ng-class="{active:mainMenuIndex==2}"><a href="#" ng-click="changeMainMenu(2)">Messages</a></li>
-        </ul>
-        11111111111
+    <div id="container">
+        <div id="header" class="autocw">
+            <a id="logo" ng-click="jumpMain()">
+                <img src="../images/logo.png" width="250" />
+            </a>
+            <!-- <a href="" id="openmenu" class="fl"><img src="../images/openmw.png" alt=""></a> -->
+            <ul style="display:block">
+                <li>
+                    <a href="/web/aboutSdd/gmSpeech">关于大地</a>
+                </li>
+                <li>
+                    <a href="/web/project/classicProject">经典项目</a>
+                </li>
+                <li>
+                    <a href="/web/news/newsList">新闻媒体</a>
+                </li>
+                <li>
+                    <a>加入大地</a>
+                </li>
+                <li id="move"></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
 
         <div ng-view="" ></div>
+
+        <div id="footer" class="autocw">
+            <div class="fr">
+                COPYRIGHT © SOLUTION DESIGN DEVELOPMENT ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="">下载</a>
+                <span>|</span>
+                <a href="">网站地图</a>
+                <span>|</span>
+                <a href="">联系我们</a>
+                <span>|</span>
+                <a href="http://weibo.com/sddarch?sudaref=login.sina.com.cn&retcode=6102">新浪微博</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 

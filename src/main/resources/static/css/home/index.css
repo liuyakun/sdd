@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+/* #header{width:auto;padding-left:30px;padding-right:30px;background:rgba(0,0,0,.7);}
+#header ul li a{color:#fff;}
+#footer{background: #000;background: rgba(0,0,0,.8);width: 100%;color: #767676;}
+#footer .fr{margin-right: 20px;} */
+
+.about_article h2{color:#343434;font-size:18px;line-height:30px;font-weight:normal;;font-style:normal;}
+.about_article h2 strong{font-size: 24px;color: #ffae00;}

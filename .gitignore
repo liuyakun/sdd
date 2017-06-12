@@ -21,3 +21,6 @@ src/main/java/com/hpe/GitVer.java
 src/main/resources/static/css/mgr/manager.css
 src/main/resources/static/css/mgr/manager.css.map
 src/main/resources/static/testInte/config-dev.js
+
+src/main/webapp/images/
+src/main/webapp/upload/

@@ -1,4 +1,4 @@
-define(['angular','routes','../script/service/dependencyResolverFor','angularResource','angularRoute','bootstrap'], function(angular,config, dependencyResolverFor)
+define(['angular','routes','../script/service/dependencyResolverFor','angularResource','angularRoute','bootstrap','org'], function(angular,config, dependencyResolverFor)
 {
     var app = angular.module('sdd', [ 'ngResource', 'ngRoute']);
     app.config(

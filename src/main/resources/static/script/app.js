@@ -1,7 +1,7 @@
 requirejs.config({
     paths:{
         angular:"/script/lib/angular/angular.min",
-        jquery:'/script/lib/jquery/dist/jquery.min',
+        jquery:'/script/js/jquery.min',
         angularResource: "/script/lib/angular-resource/angular-resource.min",
         angularRoute:"/script/lib/angular-route/angular-route.min",
         bootstrap: "/script/lib/bootstrap/dist/js/bootstrap.min",
@@ -10,6 +10,7 @@ requirejs.config({
         bootstrapDateTimePicker:"/script/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min",
         bootstrapDateTimePickerCN:"/script/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
         flot:"/script/lib/flot/jquery.flot",
+        org : "/script/js/org"
     },
     shim:{
         jquery: { exports: '$' },
@@ -20,7 +21,8 @@ requirejs.config({
         ajaxfileupload:['jquery'],
         bootstrapDateTimePicker:['bootstrap'],
         bootstrapDateTimePickerCN:['bootstrapDateTimePicker'],
-        flot:['jquery']
+        flot:['jquery'],
+        org:['jquery']
     }
 });
 

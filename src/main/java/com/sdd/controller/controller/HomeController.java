@@ -6,12 +6,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
+
     /**
      * 静态页面处理程序
      * 主页面
      * @return 返回HTML静态页面
      */
-    @RequestMapping(path={"/", "/web/**"}, method = RequestMethod.GET)
+    @RequestMapping(path={"/"}, method = RequestMethod.GET)
+    public String forwardMain() {
+        return "forward:/main.html";
+    }
+
+    /**
+     * 静态页面处理程序
+     * 主页面(内页面)
+     * @return 返回HTML静态页面
+     */
+    @RequestMapping(path={"/web", "/web/**"}, method = RequestMethod.GET)
     public String forwardIndex() {
         return "forward:/index.html";
     }
