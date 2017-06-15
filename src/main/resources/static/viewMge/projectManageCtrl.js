@@ -3,7 +3,7 @@
  */
 define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleService',
     '../viewMge/myPagination','ajaxfileupload'],function(module, $, zeroClipboard, InfoArticleService){
-    module.controller('projectManageCtrl',function($resource,$scope,$rootScope,$timeout,$location,mgeService){
+    module.controller('projectManageCtrl',function($resource,$scope,$rootScope,$timeout,$location,mgeService,$route){
         // console.log("news");
         window['ZeroClipboard'] = zeroClipboard;
         var infoArticleService = new InfoArticleService($resource);
@@ -109,8 +109,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             this.addNewsData.content =ue.getContent();
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
-                    _this.pageInfoArticle();
-                    _this.addReturn();
+                    console.log(data);
+                    _this.uploadFile(data.message,1);
                 }else{
                     console.log(data);
                 }
@@ -124,6 +124,12 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         $("#updateShow").hide();
         this.checkUpdate = function (updateData) {
             $scope.updateData = angular.copy(updateData);
+            $scope.pathArray = [];
+            $scope.pathArray = updateData.filePath.split("&");
+            var dd2 = document.getElementById("dd2");
+            for (var i = 0; i < $scope.pathArray.length; i++) {
+                dd2.innerHTML += "<div style='float:left;padding-right: 20px;' ><img style='width: 180px;height: 210px;' src='/upload/" + $scope.pathArray[i] + "'  /> </div>";
+            }
             ueModify.ready(function(){
                 ueModify.setContent(updateData.content);
             });
@@ -131,9 +137,12 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             $("#listShow").slideUp("slow");
         };
 
+
+
         this.updateReturn = function(){
             $("#listShow").slideDown("slow");
             $("#updateShow").slideUp("slow");
+            $route.reload();
         };
 
         UE.delEditor('updateContainer');
@@ -150,6 +159,10 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             $scope.updateData.content = ueModify.getContent();
             infoArticleService.updateInfoArticle($scope.updateData,function(data){
                 if(data.status === "true"){
+                    var docObj2 = document.getElementById("doc_2");
+                    if(docObj2.files.length !== 0){
+                        _this.uploadFile($scope.updateData.id,2);
+                    }
                     _this.pageInfoArticle();
                     _this.updateReturn();
                 }else{
@@ -161,9 +174,9 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //---------------------------------------------------上传图片-------------------------------------------------
         $scope.setImagePreviewList = function (num) {
 
-            var docObj = document.getElementById("doc_1");
+            var docObj = document.getElementById("doc_"+num);
 
-            var dd = document.getElementById("dd");
+            var dd = document.getElementById("dd"+num);
 
             dd.innerHTML = "";
 
@@ -173,7 +186,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
 
 
-                dd.innerHTML += "<div style='float:left' > <img id='img" + i + "'  /> </div>";
+                dd.innerHTML += "<div style='float:left;padding-right: 20px;' > <img id='img" + i + "'  /> </div>";
 
                 var imgObjPreview = document.getElementById("img"+i);
 
@@ -183,9 +196,9 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
                     imgObjPreview.style.display = 'block';
 
-                    imgObjPreview.style.width = '150px';
+                    imgObjPreview.style.width = '180px';
 
-                    imgObjPreview.style.height = '180px';
+                    imgObjPreview.style.height = '210px';
 
                     //imgObjPreview.src = docObj.files[0].getAsDataURL();
 
@@ -209,9 +222,9 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
                     //必须设置初始大小
 
-                    localImagId.style.width = "150px";
+                    localImagId.style.width = "180px";
 
-                    localImagId.style.height = "180px";
+                    localImagId.style.height = "210px";
 
                     //图片异常的捕捉，防止用户修改后缀来伪造图片
 
@@ -262,6 +275,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                     data: _this.data,//一同上传的数据
                     success: function (data,status) {
                         console.log(data);
+                        $route.reload();
                     },
                     error: function (data, status, e) {
                         alert(JSON.stringify(data));

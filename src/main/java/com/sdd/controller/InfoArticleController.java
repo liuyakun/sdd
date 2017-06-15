@@ -41,8 +41,8 @@ public class InfoArticleController {
         }
         show.setCreateUser(username);
         int add = iInfoArticleService.add(show);
-        if(add==1){
-            return  new ObjectResult("true","新增成功");
+        if(add!=0){
+            return  new ObjectResult("true",add);
         }
         return  new ObjectResult("false","新增失败");
     }

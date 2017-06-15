@@ -29,7 +29,7 @@ public class InfoArticleService implements IInfoArticleService {
     /**
      * 新增
      * @param show
-     * @return 1成功 2失败
+     * @return 0失败
      */
     @Override
     public int add(InfoArticleShow show){
@@ -38,8 +38,13 @@ public class InfoArticleService implements IInfoArticleService {
         Integer infoId = show.getInfoId();
         infoArticle.setIsEnable("1");
 
-        InfoArticle save = infoArticleRepository.save(infoArticle);
-        return 1;
+        try{
+            InfoArticle save = infoArticleRepository.save(infoArticle);
+            return save.getId();
+        }catch (Exception e){
+            return 0;
+        }
+
 
     }
 
