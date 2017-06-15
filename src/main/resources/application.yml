@@ -14,7 +14,7 @@ logging:
 spring:
     profiles.active: dev
     resources.cache-period: 0
-    servlet.multipart:
+    http.multipart:
         max-file-size: 10MB
         max-request-size: 10MB
         resolve-lazily: true
