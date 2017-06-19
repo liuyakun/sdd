@@ -33,6 +33,14 @@ define([], function () {
                 templateUrl: '/view/project/classicProject.html',
                 dependencies: ['../view/project/classicProjectCtrl']
             },
+            '/web/project/classicProject/info': {
+                templateUrl: '/view/project/classicProjectInfo.html',
+                dependencies: ['../view/project/classicProjectInfoCtrl']
+            },
+            '/web/project/classicProject/post': {
+                templateUrl: '/view/project/classicProjectPost.html',
+                dependencies: ['../view/project/classicProjectPostCtrl']
+            },
 
             //-------------------------------------------新闻列表-------------------------------------------------
             '/web/news/newsList': {
