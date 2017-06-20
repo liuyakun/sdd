@@ -37,7 +37,7 @@ define([], function () {
                 templateUrl: '/view/project/classicProjectInfo.html',
                 dependencies: ['../view/project/classicProjectInfoCtrl']
             },
-            '/web/project/classicProject/post': {
+            '/web/project/classicProject/post/:id': {
                 templateUrl: '/view/project/classicProjectPost.html',
                 dependencies: ['../view/project/classicProjectPostCtrl']
             },

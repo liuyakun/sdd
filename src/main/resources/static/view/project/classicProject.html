@@ -1,4 +1,4 @@
-<div ng-controller="classicProjectCtrl">
+<div ng-controller="classicProjectCtrl as cp">
     <ul id="submenus" class="autocw">
         <li>
             <a style="color:#3b3b3b">推荐</a>
@@ -13,76 +13,21 @@
     </ul>
     <div id="content" class="autocw" style="height: 536px;">
         <div id="listcontent" class="zScroll" tabindex="5000" style="overflow-y: hidden; outline: none;">
-            <div class="pcitem projectitem">
-                <a href="/web/project/classicProject/info">
-                    <img src="" width="280" height="180">
+            <div ng-repeat="pl in cp.projectList" class="pcitem projectitem">
+                <a ng-click="jumpDefault(pl.id);">
+                    <img ng-src="{{pl.defaultPath}}" width="280" height="180">
                     <div class="pcitemcc">
                         <div>
-                            <p class="pcitemtitle">小米科技北京总部</p>
+                            <p class="pcitemtitle" ng-bind="pl.title"></p>
                             <p class="pcitemfoot">
                                 办公建筑
-                                <span class="fr">2015-01-07</span>
+                                <span class="fr" ng-bind="pl.createDate | date:'yyyy-MM-dd'"></span>
                             </p>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="pcitem projectitem">
-                <a href="/web/project/classicProject/post">
-                    <img src="" width="280" height="180">
-                    <div class="pcitemcc">
-                        <div>
-                            <p class="pcitemtitle">北京新机场</p>
-                            <p class="pcitemfoot">
-                                城市交通建筑
-                                <span class="fr">2015-01-01</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="pcitem projectitem">
-                <a href="">
-                    <img src="" width="280" height="180">
-                    <div class="pcitemcc">
-                        <div>
-                            <p class="pcitemtitle">雁栖湖国际会展中心</p>
-                            <p class="pcitemfoot">
-                                会展建筑
-                                <span class="fr">2013-06-01</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="pcitem projectitem last">
-                <a href="">
-                    <img src="" width="280" height="180">
-                    <div class="pcitemcc">
-                        <div>
-                            <p class="pcitemtitle">雁栖湖国际会展中心</p>
-                            <p class="pcitemfoot">
-                                会展建筑
-                                <span class="fr">2013-06-01</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="pcitem projectitem">
-                <a href="">
-                    <img src="" width="280" height="180">
-                    <div class="pcitemcc">
-                        <div>
-                            <p class="pcitemtitle">雁栖湖国际会展中心</p>
-                            <p class="pcitemfoot">
-                                会展建筑
-                                <span class="fr">2013-06-01</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+
             <div class="listloading" data-maxpage="2" data-url="http://www.biad.com.cn/project.php?rec=1&amp;page=" style="display: none;">
                 <span>没有更多内容</span>
             </div>

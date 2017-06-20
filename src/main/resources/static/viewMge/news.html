@@ -36,7 +36,13 @@
         </div>
         <div class="" style="padding-top: 20px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-            <input type="text" ng-model="nc.addNewsData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"/>
+            <input type="text" ng-model="nc.addNewsData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid" ng-change="nc.calculateLength()"/>
+            <i class="fl x-h6 lineheight30 mrleft10">
+                还可以输入
+                <i class="color2 x-h3 mr2" ng-bind="nc.leftLength"></i>
+                /{{nc.maxLength}}字
+            </i>
+            <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章名不能为空</i>
         </div>
         <div class="" style="padding-top: 60px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
@@ -44,7 +50,7 @@
                 <h5 class="clearfix">
                     <!-- 加载编辑器的容器 -->
                     <script id="container" name="content" type="text/plain" style="width:100%;"></script>
-                    <!--<i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="amc.contentShow">文章内容不能为空</i>-->
+                    <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
                 </h5>
             </div>
         </div>
@@ -64,7 +70,13 @@
         </div>
         <div class="" style="padding-top: 20px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-            <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"/>
+            <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid" ng-change="nc.ModifycalculateLength()"/>
+            <i class="fl x-h6 lineheight30 mrleft10">
+                还可以输入
+                <i class="color2 x-h3 mr2" ng-bind="nc.modifyLeftLength">10</i>
+                /{{nc.maxLength}}字
+            </i>
+            <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章标题不能为空</i>
         </div>
         <div class="" style="padding-top: 60px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
@@ -72,7 +84,7 @@
                 <h5 class="clearfix">
                     <!-- 加载编辑器的容器 -->
                     <script id="updateContainer" name="content" type="text/plain" style="width:100%;"></script>
-                    <!--<i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="amc.contentShow">文章内容不能为空</i>-->
+                    <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
                 </h5>
             </div>
         </div>

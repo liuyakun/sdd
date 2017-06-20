@@ -76,6 +76,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //点击新增
         $("#addShow").hide();
         this.checkAdd = function(){
+            this.titleShow = false;
+            this.contentShow = false;
             this.addNewsData = {};
             ue.ready(function(){
                 ue.setContent("");
@@ -99,8 +101,16 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //新增新闻
         this.addNewsData = {};
         this.addNews = function(){
+            if(this.addNewsData.title === "" || this.addNewsData.title === undefined){
+                this.titleShow = true;
+                return;
+            }
             this.addNewsData.infoId = 1;
             this.addNewsData.content =ue.getContent();
+            if(this.addNewsData.content ===""){
+                this.contentShow = true;
+                return;
+            }
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
                     _this.pageInfoArticle();
@@ -117,6 +127,10 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //点击修改
         $("#updateShow").hide();
         this.checkUpdate = function (updateData) {
+            this.modifyLeftLength = 100;
+            this.titleShow = false;
+            this.contentShow = false;
+            this.modifyLeftLength = this.maxLength - updateData.title.length;
             $scope.updateData = angular.copy(updateData);
             ueModify.ready(function(){
                 ueModify.setContent(updateData.content);
@@ -140,8 +154,15 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
         //确认修改
         this.updateNews = function(){
-            console.log($scope.updateData);
+            if($scope.updateData.title === "" || $scope.updateData.title === undefined){
+                this.titleShow = true;
+                return;
+            }
             $scope.updateData.content = ueModify.getContent();
+            if($scope.updateData.content ===""){
+                this.contentShow = true;
+                return;
+            }
             infoArticleService.updateInfoArticle($scope.updateData,function(data){
                 if(data.status === "true"){
                     _this.pageInfoArticle();
@@ -150,6 +171,30 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                     console.log(data);
                 }
             });
+        };
+
+
+        //计算新增还可输入多少个字符
+        this.maxLength = 100;
+        this.leftLength = 100;
+        this.calculateLength = function(){
+            this.titleShow = false;
+            if(this.addNewsData.title.length <= this.maxLength){
+                this.leftLength = this.maxLength - this.addNewsData.title.length;
+            } else{
+                this.leftLength = 0;
+            }
+        };
+
+        //计算修改还可输入多少个字符
+        this.ModifycalculateLength = function(){
+            this.titleShow = false;
+            if($scope.updateData.title.length <= this.maxLength){
+                this.modifyLeftLength = this.maxLength - $scope.updateData.title.length;
+            } else{
+                this.modifyLeftLength = 0;
+                //return;
+            }
         };
 
     });
