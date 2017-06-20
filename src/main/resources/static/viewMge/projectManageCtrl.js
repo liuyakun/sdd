@@ -77,6 +77,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //点击新增
         $("#addShow").hide();
         this.checkAdd = function(){
+            this.titleShow = false;
+            this.contentShow = false;
             //---------------------清空file值---------------------------
             // $("#updatePreview_1").attr("src","");
             var obj = document.getElementById('doc_1') ;
@@ -105,11 +107,18 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //新增项目
         this.addNewsData = {};
         this.addNews = function(){
+            if(this.addNewsData.title === "" || this.addNewsData.title === undefined){
+                this.titleShow = true;
+                return;
+            }
             this.addNewsData.infoId = 2;
             this.addNewsData.content =ue.getContent();
+            if(this.addNewsData.content ===""){
+                this.contentShow = true;
+                return;
+            }
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
-                    console.log(data);
                     _this.uploadFile(data.message,1);
                 }else{
                     console.log(data);
@@ -123,6 +132,10 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //点击修改
         $("#updateShow").hide();
         this.checkUpdate = function (updateData) {
+            this.modifyLeftLength = 100;
+            this.titleShow = false;
+            this.contentShow = false;
+            this.modifyLeftLength = this.maxLength - updateData.title.length;
             $scope.updateData = angular.copy(updateData);
             $scope.pathArray = [];
             $scope.pathArray = updateData.filePath.split("&");
@@ -155,8 +168,15 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
         //确认修改
         this.updateNews = function(){
-            console.log($scope.updateData);
+            if($scope.updateData.title === "" || $scope.updateData.title === undefined){
+                this.titleShow = true;
+                return;
+            }
             $scope.updateData.content = ueModify.getContent();
+            if($scope.updateData.content ===""){
+                this.contentShow = true;
+                return;
+            }
             infoArticleService.updateInfoArticle($scope.updateData,function(data){
                 if(data.status === "true"){
                     var docObj2 = document.getElementById("doc_2");
@@ -281,6 +301,30 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                         alert(JSON.stringify(data));
                     }
                 });
+            }
+        };
+
+
+        //计算新增还可输入多少个字符
+        this.maxLength = 100;
+        this.leftLength = 100;
+        this.calculateLength = function(){
+            this.titleShow = false;
+            if(this.addNewsData.title.length <= this.maxLength){
+                this.leftLength = this.maxLength - this.addNewsData.title.length;
+            } else{
+                this.leftLength = 0;
+            }
+        };
+
+        //计算修改还可输入多少个字符
+        this.ModifycalculateLength = function(){
+            this.titleShow = false;
+            if($scope.updateData.title.length <= this.maxLength){
+                this.modifyLeftLength = this.maxLength - $scope.updateData.title.length;
+            } else{
+                this.modifyLeftLength = 0;
+                //return;
             }
         };
 
