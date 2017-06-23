@@ -1,16 +1,17 @@
-<div ng-controller="newsMainCtrl">
+<div ng-controller="newsMainCtrl as nc">
     <link type="text/css" href="css/index.css" rel="stylesheet">
 <div class="x-inner">
     <div class="newsMain-breadcrumb">
         <a href="">新闻列表</a>
         <i>>></i>
-        <i>美国女摄影师记录面瘫患者的脸 提供新视角欣赏人脸美</i>
+        <i ng-bind="nc.project.title"></i>
     </div>
-    <div class="newsMain-title">美国女摄影师记录面瘫患者的脸 提供新视角欣赏人脸美</div>
+    <div class="newsMain-title" ng-bind="nc.project.title"></div>
     <div class="newsMain-main">
-        <p><img src="../images/1412598402687.jpg" alt=""></p>
+        <div ng-bind-html="nc.trustedBody"></div>
+        <!--<p><img src="../images/1412598402687.jpg" alt=""></p>
         <p>Sage Sohie是一位美国的女摄影师，因为曾经在在波士顿的面部神经诊所待过，让她对面瘫患者有了很多认识。她的作品《脸》（About Face）拍摄了面临不同程度病情的面瘫患者。往常我们对于人脸的欣赏更多的是因其平衡和对称，但是Sohier给人们提供了一种新的视角去欣赏人脸的美。</p>
-        <p class="foot"><i>新大地建筑事务所</i>       <i>2017-06-22 10:41</i></p>
+        <p class="foot"><i>新大地建筑事务所</i>       <i>2017-06-22 10:41</i></p>-->
     </div>
 </div>
 </div>

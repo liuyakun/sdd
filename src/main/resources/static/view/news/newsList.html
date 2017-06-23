@@ -14,7 +14,7 @@
             <li class="list-pt-li" ng-repeat="pl in nc.projectList">
                 <a class="list-pt-pic fl"><img ng-src="{{pl.defaultPath || 'images/1412599200830.jpg'}}" border="0" width="181" height="136"></a>
                 <div class="fr main">
-                    <a class="tit" href="/web/news/main" ng-bind="pl.title"></a>
+                    <a class="tit" ng-click="jumpNewsMain(pl.id);" ng-bind="pl.title"></a>
                     <a>
                         <p class="info" ng-bind="pl.bigTitle"></p>
                     </a>
@@ -55,15 +55,15 @@
         </div>
         <div class="page">
             <ul class="pageMenu clearfix">
-                <li class="firstPage">首页</li>
-                <li class="prevPage"> < 上一页 </li>
+                <li class="firstPage" ng-click="nc.changePage('homePage')">首页</li>
+                <li class="prevPage" ng-class="{active:objectPage.currentPage !=1}" ng-click="nc.changePage('prev')"> < 上一页 </li>
                 <div class="pageObj ">
                     
                 </div>
-                <li class="nextPage active"> 下一页 > </li>
-                <li class="lastPage">尾页</li>
+                <li class="nextPage" ng-class="{active: objectPage.currentPage != objectPage.totalPage}" ng-click="nc.changePage('next')"> 下一页 > </li>
+                <li class="lastPage" ng-click="nc.changePage('endPage')">尾页</li>
                 <li class="last" style="font-size: 14px;">
-                    共<span class="totalPage">2</span>页，跳转至 <input type="number" class="keuInput" value="1">
+                    第<span class="totalPage" ng-bind="objectPage.currentPage"></span>页，跳转至 <input type="number" class="keuInput" value="1">
                     <button type="button" class="btnSure">确定</button>
                 </li>
             </ul>

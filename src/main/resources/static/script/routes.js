@@ -47,7 +47,7 @@ define([], function () {
                 templateUrl: '/view/news/newsList.html',
                 dependencies: ['../view/news/newsListCtrl']
             },
-            '/web/news/main': {
+            '/web/news/main/:id': {
                 templateUrl: '/view/news/newsMain.html',
                 dependencies: ['../view/news/newsMainCtrl']
             },
