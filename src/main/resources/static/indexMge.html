@@ -21,39 +21,34 @@
 <body ng-controller="indexMgeCtrl as ic">
 
     <div  class="layui-nav">
-        <div class="fl" style="line-height:60px;font-size:16px;">sdd平台管理系统</div>
+        <div class="fl" style="line-height:60px;font-size:16px;"><i class="layui-icon" style="font-size:22px;padding-right:5px;">&#xe60c;</i>sdd平台系统</div>
+        <button class="layui-btn layui-btn-primary layui-btn-mini fr x-pc" style="margin-top:20px;background:transparent;color:#fff;" ng-click="ic.loginOut();">退出</button>
         <ul class="fr" pc>
-            <li class="layui-nav-item x-pc" ng-class="{true:'layui-this'}[stayUrl === 1]">
+            <li class="layui-nav-item x-pc">
                 <a href="/mge/news">新闻管理</a>
             </li>
-            <li class="layui-nav-item layui-this  x-pc" ng-class="{true:'layui-this'}[stayUrl === 2]">
+            <li class="layui-nav-item layui-this  x-pc">
                 <a  href="/mge/projectManage">项目管理</a>
             </li>
-            <li class="layui-nav-item  x-pc" pc ng-class="{true:'layui-this'}[stayUrl === 3]">
+            <li class="layui-nav-item  x-pc">
                 <a  href="/mge/modifyPwd">修改密码</a>
             </li>
             <li class="layui-nav-item x-mobile" mobile>
                 <a href="javascript:;">菜单</a>
                 <dl class="layui-nav-child">
-                    <dd>
-                        <a href="/mge/news">新闻管理</a>
-                    </dd>
-                    <dd>
-                        <a  href="/mge/projectManage">项目管理</a>
-                    </dd>
-                    <dd>
-                        <a  href="/mge/modifyPwd">修改密码</a>
-                    </dd>
+                    <dd><a href="/mge/news">新闻管理</a></dd>
+                    <dd><a  href="/mge/projectManage">项目管理</a></dd>
+                    <dd><a  href="/mge/modifyPwd">修改密码</a></dd>
+                    <dd><a ng-click="ic.loginOut();">退出</a></dd>
                 </dl>
             </li>
         </ul>
-        <div class="fr" style="line-height:60px;">
+        <div class="fr" style="line-height:60px;font-size:12px;">
+            <i class="layui-icon">&#xe612;</i>
             <a style="color: #ffffff;"> <i ng-bind="ic.userInfo.name"></i>
                 ,欢迎您！
             </a>
-            <a > <i class="x-h5 mrleft10"></i>
             </a>
-            <a style="color: #ffffff;margin-right: 60px;" ng-click="ic.loginOut();">登出</a>
         </div>
         <div class="clear"></div>
     </div>
@@ -69,9 +64,9 @@
         <p>@2016   copyright</p>
     </div>
 </body>
-    <script>
+<script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
-layui.use(['element','form', 'layedit', 'laydate','laypage', 'layer'], function(){
+layui.use(['element','form', 'layedit', 'laydate', 'layer'], function(){
   var element = layui.element();
   var form = layui.form()
   ,layer = layui.layer
@@ -82,16 +77,6 @@ layui.use(['element','form', 'layedit', 'laydate','laypage', 'layer'], function(
   form.on('submit(formDemo)', function(data){
     layer.msg(JSON.stringify(data.field));
     return false;
-  });
-  //分頁
-  var laypage = layui.laypage
-  ,layer = layui.layer;
-  laypage({
-    cont: 'demo4'
-    ,pages: 100
-    ,first: false
-    ,last: false
-    ,skin: '#da252c'
   });
     //监听折叠
   element.on('collapse(test)', function(data){
