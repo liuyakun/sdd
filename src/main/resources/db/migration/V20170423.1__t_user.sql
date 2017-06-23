@@ -8,5 +8,5 @@ CREATE TABLE t_user(
 )COMMENT='成员表';
 
 
-INSERT INTO t_user(name,address,phone,staff_id) VALUES ('xxx','xxx','13500000001',1);
+INSERT INTO t_user(name,address,phone,staff_id) VALUES ('admin','xxx','13500000001',1);
 INSERT INTO t_user(name,address,phone,staff_id) VALUES ('xxx','xxx','13500000002',2);
