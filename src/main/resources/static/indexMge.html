@@ -6,83 +6,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SDD</title>
-
-    <link href="/css/layui/css/layui.css" rel="stylesheet">
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/mppublic.css" rel="stylesheet">
-    <link href="/css/index.css" rel="stylesheet">
-    <link href="/css/page.css" rel="stylesheet">
-    <link href="/css/IMGUP.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/layui/css/global.css">
+    <link rel="stylesheet" href="../css/layui/css/full.css">
+    <link rel="stylesheet" href="../css/layui/css/modules/layer/default/layer.css">
+    <link rel="stylesheet" href="../css/layui/css/mppublic.css">
+    <link rel="stylesheet" href="../css/layui/css/modules/code.css">
+    <link rel="stylesheet" href="../css/layui/css/index.css">
+    <script src="../css/layui/layui.js"></script>
 
     <base href="/indexMge.html" />
 
 </head>
 <body ng-controller="indexMgeCtrl as ic">
-    <div>
-        <div class="l-header clearfix">
-            <div class="l-logo fl"><i class="x-icons x-icons-logo x-h1"></i></div>
-            <div class="l-firstnav fl clearfix">
-                <div class="fl">
-                    <!-- <a class="da"></a> -->
-                </div>
-                <div class="fl">
-                    <i class="icons02 icons02-iconav"></i>
-                </div>
-            </div>
-             <span class="l-navdropdown">
-                <a></a>
-            </span>
-            <div class="l-header-right fr" style="margin-top: 16px;">
-                <a style="color: #ffffff;"><i ng-bind="ic.userInfo.name"></i>,欢迎您！</a>
-                <a ><i class="x-h5 mrleft10"></i></a>
-                <a style="color: #ffffff;margin-right: 60px;" ng-click="ic.loginOut();">登出</a>
-            </div>
-        </div>
-        <div class="l-lrmain clearfix">
 
-            <div class="l-left clearfix">
-
-                <ul class="layui-nav layui-nav-tree l-nav">
-                    <li class="layui-nav-item" ng-class="{true:'layui-nav-itemed'}[stayUrl === 1]">
+    <div  class="layui-nav">
+        <div class="fl" style="line-height:60px;font-size:16px;">sdd平台管理系统</div>
+        <ul class="fr" pc>
+            <li class="layui-nav-item x-pc" ng-class="{true:'layui-this'}[stayUrl === 1]">
+                <a href="/mge/news">新闻管理</a>
+            </li>
+            <li class="layui-nav-item layui-this  x-pc" ng-class="{true:'layui-this'}[stayUrl === 2]">
+                <a  href="/mge/projectManage">项目管理</a>
+            </li>
+            <li class="layui-nav-item  x-pc" pc ng-class="{true:'layui-this'}[stayUrl === 3]">
+                <a  href="/mge/modifyPwd">修改密码</a>
+            </li>
+            <li class="layui-nav-item x-mobile" mobile>
+                <a href="javascript:;">菜单</a>
+                <dl class="layui-nav-child">
+                    <dd>
                         <a href="/mge/news">新闻管理</a>
-                        <!--<dl class="layui-nav-child">
-                            <dd><a href="">选项1</a></dd>
-                            <dd><a href="">选项2</a></dd>
-                        </dl>-->
-                    </li>　
-                    <li class="layui-nav-item" ng-class="{true:'layui-nav-itemed'}[stayUrl === 2]">
-                        <a href="/mge/projectManage">项目管理</a>
-                    </li>
-                    <li class="layui-nav-item" ng-class="{true:'layui-nav-itemed'}[stayUrl === 3]">
-                        <a href="/mge/modifyPwd">修改密码</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="l-left-shade"></div>
-
-
-
-            <div class="l-right">
-
-                <div class="l-ngview">
-                    <div class="l-ngviewinner">
-                        <div ng-view="" ></div>
-                    </div>
-                </div>
-
-                <div class="l-loginfooter">
-                    <div class="tcenter" ng-show="isLogin">
-                        <p>Copyright@ 新大地</p>
-                    </div>
-                </div>
-            </div>
-
+                    </dd>
+                    <dd>
+                        <a  href="/mge/projectManage">项目管理</a>
+                    </dd>
+                    <dd>
+                        <a  href="/mge/modifyPwd">修改密码</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="fr" style="line-height:60px;">
+            <a style="color: #ffffff;"> <i ng-bind="ic.userInfo.name"></i>
+                ,欢迎您！
+            </a>
+            <a > <i class="x-h5 mrleft10"></i>
+            </a>
+            <a style="color: #ffffff;margin-right: 60px;" ng-click="ic.loginOut();">登出</a>
         </div>
+        <div class="clear"></div>
     </div>
 
+    <div class="main layui-clear">
+        <div class="wrap">
+            <div ng-view="" ></div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>@2016   copyright</p>
+    </div>
 </body>
+    <script>
+//注意：导航 依赖 element 模块，否则无法进行功能性操作
+layui.use(['element','form', 'layedit', 'laydate','laypage', 'layer'], function(){
+  var element = layui.element();
+  var form = layui.form()
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+  //分頁
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+  laypage({
+    cont: 'demo4'
+    ,pages: 100
+    ,first: false
+    ,last: false
+    ,skin: '#da252c'
+  });
+    //监听折叠
+  element.on('collapse(test)', function(data){
+    layer.msg('展开状态：'+ data.show);
+  });
+   //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+  //日期控件
+    var start = {
+    min: laydate.now()
+    ,max: '2099-06-16 23:59:59'
+    ,istoday: false
+    ,choose: function(datas){
+      end.min = datas; //开始日选好后，重置结束日的最小日期
+      end.start = datas //将结束日的初始值设定为开始日
+    }
+  };
+  
+  var end = {
+    min: laydate.now()
+    ,max: '2099-06-16 23:59:59'
+    ,istoday: false
+    ,choose: function(datas){
+      start.max = datas; //结束日选好后，重置开始日的最大日期
+    }
+  };
+  
+  document.getElementById('LAY_demorange_s').onclick = function(){
+    start.elem = this;
+    laydate(start);
+  }
+  document.getElementById('LAY_demorange_e').onclick = function(){
+    end.elem = this
+    laydate(end);
+  }
+});
+</script>
 
-
-<script data-main="/script/appMge.js" src="/script/lib/requirejs/require.min.js"></script>
+    <script data-main="/script/appMge.js" src="/script/lib/requirejs/require.min.js"></script>
 </html>

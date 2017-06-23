@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+/* l-公共模板 */
+.fr{float: right;}
+.fl{float: left;}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear: both;}
+.clearfix{overflow: hidden;zoom:1;}
+.center{margin: 0 auto !important;}
+.hide{display:none;}
+.show{display:block;}
+.novisibility{visibility:hidden}
+.okvisibility{visibility:visible;}
+.pointer{cursor:pointer;}
+.tcenter{text-align:center;}
+.x-nav-mobile{display:none;}
+.x-wth100{width: 100% !important;}
+.x-margin0{margin:0 !important;}
+.x-nowrap{white-space:nowrap;}
+
+/* 修改框架 */
+.layui-form-select dl dd.layui-this {
+    background-color: #e86c71;
+    color: #fff;
+}
+
+
+/* 适配 */
+ @media screen and (min-width: 1025px) {
+  .x-mobile{display:none !important;}
+}
+
+@media screen and (max-width: 1024px) {
+  .x-mobile{display:none !important;}
+}
+
+@media screen and (max-width: 750px) {
+  .x-pc{display:none !important;}
+  .x-mobile{display:block !important;}
+}
+
+/* 分屏柵格系統 */
+.x-row{padding:5px;}
+ @media screen and (min-width: 1025px) {
+  .x-lg-12{width:100%;display:inline-block;float:left;}
+  .x-lg-6{width:50%;display:inline-block;float:left;}
+  .x-lg-4{width:33.33%;display:inline-block;float:left;}
+  .x-lg-3{width:25%;display:inline-block;float:left;}
+  .x-lg-2{width:16.66%;display:inline-block;float:left;}
+  .x-lg-1{width:8.33%;display:inline-block;float:left;}
+}
+
+@media screen and (max-width: 1024px) {
+  .x-md-12{width:100%;display:inline-block;float:left;}
+  .x-md-6{width:50%;display:inline-block;float:left;}
+  .x-md-4{width:33.33%;display:inline-block;float:left;}
+  .x-md-3{width:25%;display:inline-block;float:left;}
+  .x-md-2{width:16.66%;display:inline-block;float:left;}
+  .x-md-1{width:8.33%;display:inline-block;float:left;}
+}
+
+@media screen and (max-width: 750px) {
+  .x-sm-12{width:100%;display:inline-block;float:left;}
+  .x-sm-6{width:50%;display:inline-block;float:left;}
+  .x-sm-4{width:33.33%;display:inline-block;float:left;}
+  .x-sm-3{width:25%;display:inline-block;float:left;}
+  .x-sm-2{width:16.66%;display:inline-block;float:left;}
+  .x-sm-1{width:8.33%;display:inline-block;float:left;}
+} 
+@media screen and (max-width: 450px) {
+  .x-xs-12{width:100%;display:inline-block;float:left;}
+  .x-xs-6{width:50%;display:inline-block;float:left;}
+  .x-xs-4{width:33.33%;display:inline-block;float:left;}
+  .x-xs-3{width:25%;display:inline-block;float:left;}
+  .x-xs-2{width:16.66%;display:inline-block;float:left;}
+  .x-xs-1{width:8.33%;display:inline-block;float:left;}
+} 
+
+/* 适配 */
+ @media screen and (min-width: 1025px) {
+/* 首页map */
+.x-logo{height:50px;padding:5px;}
+.index-map{width:100%;height:700px;}
+}
+
+@media screen and (max-width: 1024px) {
+/* 首页map */
+.x-logo{height:50px;padding:5px;}
+.index-map{width:100%;height:500px;}
+}
+
+@media screen and (max-width: 750px) {
+/* 首页map */
+.x-logo{height:50px;padding:5px;}
+.index-map{width:100%;height:500px;}
+} 
+@media screen and (max-width: 450px) {
+/* 首页map */
+.x-logo{height:36px;padding:12px 0;}
+.index-map{width:100%;height:300px;}
+} 

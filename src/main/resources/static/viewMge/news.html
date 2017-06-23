@@ -1,154 +1,155 @@
 <div ng-controller="newsCtrl as nc">
     <div id="listShow">
-        <div class="l-breadcrumb clearfix">
-            <span class="left fl">新闻列表</span>
-            <a href="" class="rightbtn fr" ng-click="nc.checkAdd();">新增</a>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>新闻列表</legend>
+        </fieldset>
+        <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkAdd();">新增</button>
+        <div class="layui-form" style="overflow-x:auto;">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>标题</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="nl in nc.newsList">
+                        <td class="x-nowrap" ng-bind="nl.id"></td>
+                        <td class="x-nowrap" ng-bind="nl.title"></td>
+                        <td class="x-nowrap" ng-bind="nl.createDate | date:'yyyy-MM-dd hh:mm:ss'"></td>
+                        <td class="x-nowrap">
+                            <div class="layui-btn-group">
+                                <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkUpdate(nl);">编辑</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkDelete(nl.id);">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="main">
-            <thead>
-            <tr>
-                <td>编号</td>
-                <td>标题</td>
-                <td>创建时间</td>
-                <td>操作</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr  ng-repeat="nl in nc.projectList">
-                <td ng-bind="nl.id"></td>
-                <td ng-bind="nl.title"></td>
-                <td ng-bind="nl.createDate | date:'yyyy-MM-dd hh:mm:ss'"></td>
-                <td>
-                    <a href="" class="link" ng-click="nc.checkUpdate(nl);">编辑</a> |
-                    <a class="link" ng-click="nc.checkDelete(nl.id);">删除</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
         <div style="margin-top: 10px;" my-pagination page-object="objectPage"></div>
-    </div>
-
-    <!--增加-->
-    <div id="addShow">
-        <div class="l-breadcrumb clearfix">
-            <span class="left fl">新闻列表-新增</span>
-            <a href="" class="rightbtn fr" ng-click="nc.addReturn();">返回</a>
-        </div>
-        <div class="" style="padding-top: 20px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-            <input type="text" ng-model="nc.addNewsData.title"
-                   style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"
-                   ng-change="nc.calculateLength()"/>
-            <i class="fl x-h6 lineheight30 mrleft10">
-                还可以输入
-                <i class="color2 x-h3 mr2" ng-bind="nc.leftLength">10</i>
-                /{{nc.maxLength}}字
-            </i>
-            <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章名不能为空</i>
         </div>
 
-        <div class="" style="padding-top: 60px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻描述：</span>
-            <textarea style="font-size: 16px;float: left;width: 500px;height: 40px;" ng-model="nc.addNewsData.bigTitle"></textarea>
+        <!--增加-->
+        <div id="addShow">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <a href="" class="layui-btn layui-btn-primary layui-btn-small fr" ng-click="nc.addReturn();">返回</a>
+                <legend>新闻列表-新增</legend>
+            </fieldset>
+
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新闻标题：</label>
+                    <div class="layui-input-inline" style="width:500px;">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" ng-model="nc.addNewsData.title" ng-change="nc.calculateLength()" ></div>
+                    <div class="layui-form-mid layui-word-aux">还可以输入 <i class="color2 x-h3 mr2" ng-bind="nc.leftLength"></i>
+                    /{{nc.maxLength}}字</div>
+                    <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章名不能为空</i>
+                </div>
+                  <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">新闻描述：</label>
+                    <div class="layui-input-block">
+                      <textarea placeholder="请输入内容" class="layui-textarea" ng-model="nc.addNewsData.bigTitle"></textarea>
+                    </div>
+                  </div>
+                  <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">新闻图片：</label>
+                    <div class="layui-input-block">
+                      <span class="pic wh240176px" id="dd1"></span>
+                        <!--<div id="dd" style=" width:990px;"></div>-->
+                        <p class="x-h6 mrleft10">
+                            <input style="padding-top: 180px;" type="file" name="file" id="doc_1"
+                                   onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(1);"
+                                   enabled="enabled">
+                            <!--<i class="x-h6 fl ">*banner图片大小1920*400px</i>-->
+                            <!--<i class="mgr-x-tips" ng-show="nullShow.index==1">图片不能为空！</i>-->
+                        </p>
+                    </div>
+                  </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新闻内容：</label>
+                    <div class="layui-input-block">
+                        <!-- 加载编辑器的容器 -->
+                        <script id="container" name="content" type="text/plain" style="width:100%;"></script>
+                        <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                      <button class="layui-btn" lay-submit="" lay-filter="demo1" ng-click="nc.addNews();">确定</button>
+                      <button type="reset" class="layui-btn layui-btn-primary" ng-click="nc.addReturn();">取消</button>
+                    </div>
+                  </div>
+            </form>
         </div>
+        <!--增加end-->
 
-        <div class="" style="margin-top: 60px;">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻图片：</span>
-            <span class="pic wh240176px" id="dd1"></span>
-            <!--<div id="dd" style=" width:990px;"></div>-->
-            <p class="x-h6 mrleft10">
-                <input style="padding-top: 180px;" type="file" name="file" id="doc_1"
-                       onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(1);"
-                       enabled="enabled">
-                <!--<i class="x-h6 fl ">*banner图片大小1920*400px</i>-->
-                <!--<i class="mgr-x-tips" ng-show="nullShow.index==1">图片不能为空！</i>-->
-            </p>
+        <!--修改-->
+        <div id="updateShow">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <a href="" class="layui-btn layui-btn-primary layui-btn-small fr" ng-click="nc.addReturn();">返回</a>
+                <legend>新闻列表-修改</legend>
+            </fieldset>
 
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新闻标题：</label>
+                    <div class="layui-input-inline" style="width:500px;">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" ng-model="updateData.title" ng-change="updateData.ModifycalculateLength()"></div>
+                    <div class="layui-form-mid layui-word-aux">还可以输入<i class="color2 x-h3 mr2" ng-bind="updateData.modifyLeftLength">10</i>/{{updateData.maxLength}}字</div>
+                    <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="updateData.titleShow">文章标题不能为空</i>
+                </div>
+                  <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">新闻描述：</label>
+                    <div class="layui-input-block">
+                      <textarea placeholder="请输入内容" class="layui-textarea" ng-model="updateData.bigTitle"></textarea>
+                    </div>
+                  </div>
+                  <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">新闻图片：</label>
+                    <div class="layui-input-block">
+                        <span class="pic wh240176px" id="dd2"></span>
+                        <p class="x-h6 mrleft10">
+                        <input style="padding-top: 180px;" type="file" name="file" id="doc_2"
+                                onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(2);"
+                                enabled="enabled" multiple="multiple">
+                        </p>
+                    </div>
+                  </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新闻内容：</label>
+                    <div class="layui-input-block">
+                        <script id="updateContainer" name="content" type="text/plain" style="width:100%;"></script>
+                        <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="updateData.contentShow">文章内容不能为空</i>
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                      <button class="layui-btn" lay-submit="" lay-filter="demo1" ng-click="nc.updateNews();">确定</button>
+                      <button type="reset" class="layui-btn layui-btn-primary" ng-click="nc.updateReturn();">取消</button>
+                    </div>
+                  </div>
+            </form>
         </div>
+        <!--修改end-->
 
-
-
-        <div class="" style="padding-top: 30px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
-            <div style="padding-top: 20px">
-                <h5 class="clearfix">
-                    <!-- 加载编辑器的容器 -->
-                    <script id="container" name="content" type="text/plain" style="0:100%;"></script>
-                    <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
-                </h5>
+        <div class="mgr-x-modalbg" id="deleteShow">
+            <div class="mgr-x-modal clearfix">
+                <div class="tit fl">提示</div>
+                <div class="mgr-icons mgr-icons-close fr" ng-click="lrc.hideDelete()"></div>
+                <div class="clear"></div>
+                <div class="main">
+                    <div class="x-h5">删除不可恢复，请问是否需要删除？</div>
+                </div>
+                <div class="footer fr">
+                    <a class="blue" ng-click="nc.confirmDelete()">确认</a>
+                    <a class="gray" ng-click="nc.cancelDelete();">取消</a>
+                </div>
             </div>
         </div>
 
-        <div class="mgr-modify-btns">
-            <!--<a class="mrright40 breadcrumb" ng-click="nc.addNews();">确定</a>-->
-            <a class="mrright40 breadcrumb" ng-click="nc.addNews();">确定</a>
-            <a ng-click="nc.addReturn();">取消</a>
-        </div>
     </div>
-    <!--增加end-->
-
-    <!--修改-->
-    <div id="updateShow">
-        <div class="l-breadcrumb clearfix">
-            <span class="left fl">新闻列表-修改</span>
-            <a href="" class="rightbtn fr" ng-click="nc.updateReturn();">返回</a>
-        </div>
-        <div class="" style="padding-top: 20px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-                <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"/>
-                    <i class="fl x-h6 lineheight30 mrleft10">
-                        还可以输入
-                    <i class="color2 x-h3 mr2" ng-bind="nc.modifyLeftLength">10</i>
-                        /{{nc.maxLength}}字
-                    </i>
-                    <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章标题不能为空</i>
-        </div>
-
-        <div class="" style="padding-top: 60px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻描述：</span>
-            <textarea style="font-size: 16px;float: left;width: 500px;height: 40px;" ng-model="updateData.bigTitle"></textarea>
-        </div>
-
-        <div class="" style="margin-top: 60px;">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻图片：</span>
-            <span class="pic wh240176px" id="dd2"></span>
-            <p class="x-h6 mrleft10">
-            <input style="padding-top: 180px;" type="file" name="file" id="doc_2"
-                    onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(2);"
-                    enabled="enabled" multiple="multiple">
-            </p>
-        </div>
-        <div class="" style="padding-top: 30px">
-            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
-            <div style="padding-top: 20px">
-                <h5 class="clearfix">
-                    <!-- 加载编辑器的容器 -->
-                    <script id="updateContainer" name="content" type="text/plain" style="width:100%;"></script>
-                    <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
-                </h5>
-            </div>
-        </div>
-
-        <div class="mgr-modify-btns">
-            <a class="mrright40 breadcrumb" ng-click="nc.updateNews();">确定</a>
-            <a ng-click="nc.updateReturn();">取消</a>
-        </div>
-    </div>
-    <!--修改end-->
-
-    <div class="mgr-x-modalbg" id="deleteShow">
-        <div class="mgr-x-modal clearfix">
-            <div class="tit fl">提示</div>
-            <div class="mgr-icons mgr-icons-close fr" ng-click="lrc.hideDelete()"></div>
-            <div class="clear"></div>
-            <div class="main">
-                <div class="x-h5">删除不可恢复，请问是否需要删除？</div>
-            </div>
-            <div class="footer fr">
-                <a class="blue" ng-click="nc.confirmDelete()">确认</a>
-                <a class="gray" ng-click="nc.cancelDelete();">取消</a>
-            </div>
-        </div>
-    </div>
-
-</div>
