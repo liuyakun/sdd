@@ -1,5 +1,5 @@
 # Tomcat
-server.port: 12345
+server.port: 11111
 # Logging level (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
 
 spring.mvc.view.prefix: /WEB-INF/jsp/
