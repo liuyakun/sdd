@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="nl in nc.newsList">
+            <tr  ng-repeat="nl in nc.projectList">
                 <td ng-bind="nl.id"></td>
                 <td ng-bind="nl.title"></td>
                 <td ng-bind="nl.createDate | date:'yyyy-MM-dd hh:mm:ss'"></td>
@@ -36,26 +36,51 @@
         </div>
         <div class="" style="padding-top: 20px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-            <input type="text" ng-model="nc.addNewsData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid" ng-change="nc.calculateLength()"/>
+            <input type="text" ng-model="nc.addNewsData.title"
+                   style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"
+                   ng-change="nc.calculateLength()"/>
             <i class="fl x-h6 lineheight30 mrleft10">
                 还可以输入
-                <i class="color2 x-h3 mr2" ng-bind="nc.leftLength"></i>
+                <i class="color2 x-h3 mr2" ng-bind="nc.leftLength">10</i>
                 /{{nc.maxLength}}字
             </i>
             <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章名不能为空</i>
         </div>
+
         <div class="" style="padding-top: 60px">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻描述：</span>
+            <textarea style="font-size: 16px;float: left;width: 500px;height: 40px;" ng-model="nc.addNewsData.bigTitle"></textarea>
+        </div>
+
+        <div class="" style="margin-top: 60px;">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻图片：</span>
+            <span class="pic wh240176px" id="dd1"></span>
+            <!--<div id="dd" style=" width:990px;"></div>-->
+            <p class="x-h6 mrleft10">
+                <input style="padding-top: 180px;" type="file" name="file" id="doc_1"
+                       onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(1);"
+                       enabled="enabled">
+                <!--<i class="x-h6 fl ">*banner图片大小1920*400px</i>-->
+                <!--<i class="mgr-x-tips" ng-show="nullShow.index==1">图片不能为空！</i>-->
+            </p>
+
+        </div>
+
+
+
+        <div class="" style="padding-top: 30px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
             <div style="padding-top: 20px">
                 <h5 class="clearfix">
                     <!-- 加载编辑器的容器 -->
-                    <script id="container" name="content" type="text/plain" style="width:100%;"></script>
+                    <script id="container" name="content" type="text/plain" style="0:100%;"></script>
                     <i class="fl x-h6 colorred lineheight30 mrleft20" ng-show="nc.contentShow">文章内容不能为空</i>
                 </h5>
             </div>
         </div>
 
         <div class="mgr-modify-btns">
+            <!--<a class="mrright40 breadcrumb" ng-click="nc.addNews();">确定</a>-->
             <a class="mrright40 breadcrumb" ng-click="nc.addNews();">确定</a>
             <a ng-click="nc.addReturn();">取消</a>
         </div>
@@ -70,15 +95,30 @@
         </div>
         <div class="" style="padding-top: 20px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻标题：</span>
-            <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid" ng-change="nc.ModifycalculateLength()"/>
-            <i class="fl x-h6 lineheight30 mrleft10">
-                还可以输入
-                <i class="color2 x-h3 mr2" ng-bind="nc.modifyLeftLength">10</i>
-                /{{nc.maxLength}}字
-            </i>
-            <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章标题不能为空</i>
+                <input type="text" ng-model="updateData.title" style="font-size: 12px;float: left;width: 160px;height: 28px;line-height: 28px;padding: 0 8px;border: 1px #eee solid"/>
+                    <i class="fl x-h6 lineheight30 mrleft10">
+                        还可以输入
+                    <i class="color2 x-h3 mr2" ng-bind="nc.modifyLeftLength">10</i>
+                        /{{nc.maxLength}}字
+                    </i>
+                    <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">文章标题不能为空</i>
         </div>
+
         <div class="" style="padding-top: 60px">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻描述：</span>
+            <textarea style="font-size: 16px;float: left;width: 500px;height: 40px;" ng-model="updateData.bigTitle"></textarea>
+        </div>
+
+        <div class="" style="margin-top: 60px;">
+            <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻图片：</span>
+            <span class="pic wh240176px" id="dd2"></span>
+            <p class="x-h6 mrleft10">
+            <input style="padding-top: 180px;" type="file" name="file" id="doc_2"
+                    onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(2);"
+                    enabled="enabled" multiple="multiple">
+            </p>
+        </div>
+        <div class="" style="padding-top: 30px">
             <span style="float:left;width: 130px;height: 30px;line-height: 30px;margin-right: 5px;text-align: right;font-size: 12px;">新闻内容：</span>
             <div style="padding-top: 20px">
                 <h5 class="clearfix">
