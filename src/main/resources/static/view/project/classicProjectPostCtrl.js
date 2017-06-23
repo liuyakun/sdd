@@ -6,7 +6,6 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
 
         var _this = this;
         $scope.pid = $routeParams.id;
-        console.log($scope.pid);
         var infoArticleService = new InfoArticleService($resource);
 
         //监控屏幕高度
@@ -29,13 +28,17 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                     $scope.fileList[i] = "/upload/" + $scope.fileList[i];
                 }
                 $timeout(function(){
-                    $('#rightslider ul').bxSlider({pager:false,auto: true});
+                    $('#rightslider ul').bxSlider({pager:false,auto: false});
                 },1000);
-                console.log($scope.fileList);
             });
         };
 
         this.getByIdInfoArticle();
+
+        $scope.selectCarousel = function(index){
+            var selectIndex = (index + 1) * 1780
+            $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
+        };
 
     });
 });

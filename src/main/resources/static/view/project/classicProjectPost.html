@@ -3,7 +3,7 @@
         <div id="content" class="autocw">
             <div id="projectcontent">
                 <div id="rightslider">
-                    <ul>
+                    <ul id="rightsliderUl">
                         <li ng-repeat="f in fileList">
                             <img ng-src="{{f}}" width="1736" height="1000" />
                         </li>
@@ -46,7 +46,7 @@
                     </span>
                     <div id="slidercontrol" class="fl">
                         <ul style="width:1012px">
-                            <li ng-repeat="f in fileList">
+                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)">
                                 <a href="">
                                     <img ng-src="{{f}}" width="90" height="58" />
                                     <div class="slidemask"></div>
