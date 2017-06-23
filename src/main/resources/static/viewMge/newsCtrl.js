@@ -12,7 +12,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
 
         //--------------------------------------------------列表------------------------------------------------------
         //获取项目 列表
-        this.projectList = [];
+        this.newsList = [];
         $scope.objectPage = {
             currentPage : 1,
             totalPage : 0,
@@ -25,13 +25,13 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             this.searchData.currentPage = $scope.objectPage.currentPage;
             this.searchData.pageSize = $scope.objectPage.pageSize
             infoArticleService.pageInfoArticle(this.searchData,function(data,headers){
-                // console.log(data);
                 $scope.objectPage.totalPage = headers('Page-Count');
                 $scope.objectPage.pages = [];
                 for(var i=1;i<=$scope.objectPage.totalPage;i++){
                     $scope.objectPage.pages.push(i);
                 }
-                _this.projectList = data.message;
+                _this.newsList = data.message;
+                console.log(_this.newsList);
             });
         };
         this.pageInfoArticle();

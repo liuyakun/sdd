@@ -3,7 +3,8 @@
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>新闻列表</legend>
         </fieldset>
-        <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkAdd();">新增</button>
+        <button class="layui-btn layui-btn-primary layui-btn-small " style="float:right;" ng-click="nc.checkAdd();">新增</button>
+        <div class="clear"></div>
         <div class="layui-form" style="overflow-x:auto;">
             <table class="layui-table">
                 <thead>
@@ -22,14 +23,15 @@
                         <td class="x-nowrap">
                             <div class="layui-btn-group">
                                 <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkUpdate(nl);">编辑</button>
-                                <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkDelete(nl.id);">删除</button>
+                                <button class="layui-btn layui-btn-primary layui-btn-small" data-method="notice">删除</button>
+                                <!-- <button class="layui-btn layui-btn-primary layui-btn-small" ng-click="nc.checkDelete(nl.id);">删除</button> -->
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div style="margin-top: 10px;" my-pagination page-object="objectPage"></div>
+       <!--  <div style="margin-top: 10px;" my-pagination page-object="objectPage"></div> -->
         </div>
 
         <!--增加-->
@@ -60,9 +62,9 @@
                       <span class="pic wh240176px" id="dd1"></span>
                         <!--<div id="dd" style=" width:990px;"></div>-->
                         <p class="x-h6 mrleft10">
-                            <input style="padding-top: 180px;" type="file" name="file" id="doc_1"
+                            <input type="file" name="file" id="doc_1"
                                    onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(1);"
-                                   enabled="enabled">
+                                   enabled="enabled" multiple="multiple">
                             <!--<i class="x-h6 fl ">*banner图片大小1920*400px</i>-->
                             <!--<i class="mgr-x-tips" ng-show="nullShow.index==1">图片不能为空！</i>-->
                         </p>
@@ -90,7 +92,7 @@
         <!--修改-->
         <div id="updateShow">
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <a href="" class="layui-btn layui-btn-primary layui-btn-small fr" ng-click="nc.addReturn();">返回</a>
+                <a href="" class="layui-btn layui-btn-primary layui-btn-small fr" ng-click="nc.updateReturn();">返回</a>
                 <legend>新闻列表-修改</legend>
             </fieldset>
 
@@ -113,7 +115,7 @@
                     <div class="layui-input-block">
                         <span class="pic wh240176px" id="dd2"></span>
                         <p class="x-h6 mrleft10">
-                        <input style="padding-top: 180px;" type="file" name="file" id="doc_2"
+                        <input type="file" name="file" id="doc_2"
                                 onchange="if(angular.element(this).scope()==undefined){return};angular.element(this).scope().setImagePreviewList(2);"
                                 enabled="enabled" multiple="multiple">
                         </p>
