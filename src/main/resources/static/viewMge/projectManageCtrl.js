@@ -10,16 +10,31 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         var _this = this;
         $rootScope.stayUrl = 2;
 
+        $scope.projectTypeList = [
+            {id:1,typeName:'办公建筑'},
+            {id:2,typeName:'城市规划'},
+            {id:3,typeName:'工业与交通建筑'},
+            {id:4,typeName:'建筑改造及装饰装修'},
+            {id:5,typeName:'教育建筑'},
+            {id:6,typeName:'酒店与休闲建筑'},
+            {id:7,typeName:'居住建筑'},
+            {id:8,typeName:'绿化与景观'},
+            {id:9,typeName:'商业与服务建筑'},
+            {id:10,typeName:'文化与体育建筑'},
+            {id:11,typeName:'医疗与科研建筑'}
+        ];
+
         //--------------------------------------------------列表------------------------------------------------------
         //获取项目 列表
         this.projectList = [];
         $scope.objectPage = {
             currentPage : 1,
             totalPage : 0,
-            pageSize : 10,
+            pageSize : 5,
             pages : []
         };
         this.searchData = {};
+        $scope.layPageInit = true;
         this.pageInfoArticle = function(){
             this.searchData.infoId = 2; //项目
             this.searchData.currentPage = $scope.objectPage.currentPage;
@@ -30,6 +45,26 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 $scope.objectPage.pages = [];
                 for(var i=1;i<=$scope.objectPage.totalPage;i++){
                     $scope.objectPage.pages.push(i);
+                }
+                if($scope.layPageInit){
+                    $scope.layPageInit = false;
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                                ,layer = layui.layer;
+                        laypage({
+                            cont: 'demo1'
+                            ,pages: $scope.objectPage.totalPage //总页数
+                            ,groups: 5 //连续显示分页数
+                            ,jump: function(obj, first){
+                                  if(!first){
+                                    layer.msg('第'+ obj.curr +'页');
+                                    $scope.$apply(function(){
+                                        $scope.objectPage.currentPage = obj.curr;
+                                    });
+                                  }
+                                }
+                          });
+                    });
                 }
                 _this.projectList = data.message;
             });
@@ -78,6 +113,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         $("#addShow").hide();
         this.checkAdd = function(){
             this.titleShow = false;
+            this.typeIdShow = false;
             this.contentShow = false;
             //---------------------清空file值---------------------------
             // $("#updatePreview_1").attr("src","");
@@ -111,6 +147,11 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 this.titleShow = true;
                 return;
             }
+            if($("#addSelect").val() == "?"){
+                this.typeIdShow = true;
+                return;
+            }
+            this.addNewsData.typeId = Number($("#addSelect").val()) + 1;
             this.addNewsData.infoId = 2;
             this.addNewsData.content =ue.getContent();
             if(this.addNewsData.content ===""){
@@ -134,6 +175,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         this.checkUpdate = function (updateData) {
             this.modifyLeftLength = 100;
             this.titleShow = false;
+            this.typeIdShow = false;
             this.contentShow = false;
             this.modifyLeftLength = this.maxLength - updateData.title.length;
             $scope.updateData = angular.copy(updateData);
@@ -155,7 +197,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         this.updateReturn = function(){
             $("#listShow").slideDown("slow");
             $("#updateShow").slideUp("slow");
-            $route.reload();
+
+//            $route.reload();
         };
 
         UE.delEditor('updateContainer');
@@ -295,7 +338,12 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                     data: _this.data,//一同上传的数据
                     success: function (data,status) {
                         console.log(data);
-                        $route.reload();
+                        if(num === 1){
+                            _this.addReturn();
+                        }else{
+                            _this.updateReturn();
+                        }
+                        _this.pageInfoArticle();
                     },
                     error: function (data, status, e) {
                         alert(JSON.stringify(data));

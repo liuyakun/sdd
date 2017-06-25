@@ -39,5 +39,5 @@ public interface IInfoArticleService {
      * @param pageSize
      * @return
      */
-    public PageImpl<InfoArticleShow> page(String name, Integer infoId, Integer currentPage, Integer pageSize);
+    public PageImpl<InfoArticleShow> page(String name, Integer infoId, Integer typeId, Integer currentPage, Integer pageSize);
 }

@@ -16,10 +16,11 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         $scope.objectPage = {
             currentPage : 1,
             totalPage : 0,
-            pageSize : 10,
+            pageSize : 5,
             pages : []
         };
         this.searchData = {};
+        $scope.layPageInit = true;
         this.pageInfoArticle = function(){
             this.searchData.infoId = 1; //项目
             this.searchData.currentPage = $scope.objectPage.currentPage;
@@ -30,8 +31,27 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 for(var i=1;i<=$scope.objectPage.totalPage;i++){
                     $scope.objectPage.pages.push(i);
                 }
+                if($scope.layPageInit){
+                    $scope.layPageInit = false;
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                                ,layer = layui.layer;
+                        laypage({
+                            cont: 'demo1'
+                            ,pages: $scope.objectPage.totalPage //总页数
+                            ,groups: 5 //连续显示分页数
+                            ,jump: function(obj, first){
+                                  if(!first){
+                                    layer.msg('第'+ obj.curr +'页');
+                                    $scope.$apply(function(){
+                                        $scope.objectPage.currentPage = obj.curr;
+                                    });
+                                  }
+                                }
+                          });
+                    });
+                }
                 _this.newsList = data.message;
-                console.log(_this.newsList);
             });
         };
         this.pageInfoArticle();

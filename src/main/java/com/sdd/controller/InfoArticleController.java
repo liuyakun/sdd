@@ -113,11 +113,12 @@ public class InfoArticleController {
     @RequestMapping(value = "/infoArticle/page", method = RequestMethod.GET)
     public ObjectResult page(@RequestParam(value = "name", required = false) String name,
                              @RequestParam(value = "infoId", required = false) Integer infoId,
+                             @RequestParam(value = "typeId", required = false) Integer typeId,
                              @RequestParam(value = "currentPage", required = false) Integer currentPage,
                              @RequestParam(value = "pageSize", required = false) Integer pageSize,
                              @CookieValue(value = "token_staff", required = false) String token,
                              HttpServletResponse response) {
-        PageImpl<InfoArticleShow> page = iInfoArticleService.page(name,infoId, currentPage, pageSize);
+        PageImpl<InfoArticleShow> page = iInfoArticleService.page(name,infoId, typeId,currentPage, pageSize);
         response.addHeader("Page", String.valueOf(page.getNumber() + 1));
         response.addHeader("Page-Count", String.valueOf(page.getTotalPages()));
         return new ObjectResult("true", page.getContent());

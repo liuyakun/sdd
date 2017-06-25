@@ -1,13 +1,7 @@
 <div ng-controller="classicProjectCtrl as cp">
     <ul id="submenus" class="autocw">
-        <li>
-            <a style="color:#3b3b3b">推荐</a>
-        </li>
-        <li>
-            <a>第一种</a>
-        </li>
-        <li>
-            <a>第二种</a>
+        <li ng-repeat="p in projectTypeList">
+            <a ng-bind="p.typeName" ng-click="pageInfoArticleByType(p.id)"></a>
         </li>
         <div class="clear"></div>
     </ul>

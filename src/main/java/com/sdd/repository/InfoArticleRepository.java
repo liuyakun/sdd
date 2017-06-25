@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface InfoArticleRepository extends JpaRepository<InfoArticle,Integer>{
 
     @Query(value = "select info from  InfoArticle info where  (?1 is null or info.name = concat('%',concat(?1,'%') ))  " +
-            " and (?2 is null or info.infoId = ?2)")
-    Page<InfoArticle> page(String name, Integer infoId, Pageable p);
+            " and (?2 is null or info.infoId = ?2) and (?3 is null or info.typeId = ?3)")
+    Page<InfoArticle> page(String name, Integer infoId,Integer typeId,Pageable p);
 }
