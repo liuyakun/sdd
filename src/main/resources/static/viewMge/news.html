@@ -164,21 +164,21 @@
 </div>
 <!--修改end-->
 
-<div class="mgr-x-modalbg" id="deleteShow">
-<div class="mgr-x-modal clearfix">
-<div class="tit fl">提示</div>
-<div class="mgr-icons mgr-icons-close fr" ng-click="lrc.hideDelete()"></div>
-<div class="clear"></div>
-<div class="main">
-<div class="x-h5">删除不可恢复，请问是否需要删除？</div>
-</div>
-<div class="footer fr">
-<a class="blue" ng-click="nc.confirmDelete()">确认</a>
-<a class="gray" ng-click="nc.cancelDelete();">取消</a>
-</div>
-</div>
-</div>
 
+<div class="layui-layer layui-layer-page  layer-anim"  id="deleteShow" style="z-index: 19891017; top:20%; left:40%;display:none;">
+<div class="layui-layer-title" style="cursor: move;">提示</div>
+<div id="LAY_demoauto" class="layui-layer-content">
+<div style="padding: 20px 100px;">删除不可恢复，请问是否需要删除？</div>
+</div>
+<span class="layui-layer-setwin">
+<a class="layui-layer-ico layui-layer-close layui-layer-close1"  ng-click="nc.cancelDelete()"></a>
+</span>
+<div class="layui-layer-btn layui-layer-btn-c">
+<a class="layui-layer-btn0" ng-click="nc.confirmDelete()">确认</a>
+<a class="layui-btn layui-btn-primary" ng-click="nc.cancelDelete();">取消</a>
+</div>
+<span class="layui-layer-resize"></span>
+</div>
 <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use(['element','form', 'layedit', 'laydate', 'layer'], function(){
