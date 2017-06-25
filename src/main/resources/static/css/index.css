@@ -27,6 +27,8 @@ table.main tbody tr td{color:#666;font-size:12px;padding:8px 8px;line-height:22p
 table.main tbody tr td a.link{color:#3D94EA;padding:0 5px;}
 table.main tbody tr td a.link:hover{color:#09498A;text-decoration:underline !important;}
 table.main tbody tr:nth-child(odd){background-color:#fcfcfc;}
+.autocw {width: 1240px !important;}
+body{}
 /* newsList */
 .x-inner{width:1240px;margin:0 auto;}
 .new-List{width:100%;}
