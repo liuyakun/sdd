@@ -80,3 +80,12 @@ table.main tbody tr:nth-child(odd){background-color:#fcfcfc;}
 .page .keuInput{padding: 0 5px;width: 30px;border: solid thin #ddd;height: 29px;outline: none;text-align: center;font-size: 13px;}
 .page .btnSure{padding: 4px 8px;border: solid thin #ddd;outline: none;text-align: center;font-size: 13px;background: #2db12d;position: relative;top: 2px;color:#fff;}
 .page .btnSure:hover{cursor: pointer;}
+/* 公司總覽 */
+#leftcontent #leftbody p{text-indent:2em;}
+/* 资质 */
+.aptitude-title{font-size:16px;color:000;line-height:20px;}
+.aptitude-main{width:1050px;margin:20px auto;}
+.aptitude-main .aptitude-one{width:502px;height:450px;margin:10px;}
+.aptitude-main .aptitude-one .aptitude-pic{width:500px;height:400px;border:1px #ccc solid;}
+.aptitude-main .aptitude-one .aptitude-pic img{margin:10px;width:480px;height:380px;}
+.aptitude-main .aptitude-one .aptitude-name{line-height:50px;text-align:center;color:#666;font-size:14px;}
