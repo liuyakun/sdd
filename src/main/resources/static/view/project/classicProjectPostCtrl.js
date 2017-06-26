@@ -36,7 +36,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         this.getByIdInfoArticle();
 
         $scope.selectCarousel = function(index){
-            var selectIndex = (index + 1) * 1780
+            var selectIndex = (index + 1) * 1240
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
 
