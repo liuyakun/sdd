@@ -182,6 +182,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             $scope.pathArray = [];
             $scope.pathArray = updateData.filePath.split("&");
             var dd2 = document.getElementById("dd2");
+            dd2.innerHTML = "";
             for (var i = 0; i < $scope.pathArray.length; i++) {
                 dd2.innerHTML += "<div style='float:left;padding-right: 20px;' ><img style='width: 180px;height: 210px;' src='/upload/" + $scope.pathArray[i] + "'  /> </div>";
             }
