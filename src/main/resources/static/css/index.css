@@ -13,6 +13,10 @@ ul.l-nav li a.first{color:#fff;}
 .fl{float:left;}
 .fr{float:right;}
 .clearfix{clear:both;zoom:1;}
+
+.x-select{width: 98%;height: 40px;border: 1px #ccc solid;padding-left: 1%;padding-right: 1%;border-radius:3px;}
+.x-select option{max-height:20px !important;overflow:auto;}
+.x-input{width: 96%;height: 40px;border: 1px #ccc solid;padding-left: 2%;padding-right: 2%;border-radius:3px;}
 /* 内容.页尾部分 */
 .l-loginfooter{width:100%;}
 /* 内容.面包屑 */
