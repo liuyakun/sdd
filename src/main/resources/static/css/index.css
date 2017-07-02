@@ -95,3 +95,18 @@ body{}
 .aptitude-main .aptitude-one .aptitude-pic{width:500px;height:400px;border:1px #ccc solid;}
 .aptitude-main .aptitude-one .aptitude-pic img{margin:10px;width:480px;height:380px;}
 .aptitude-main .aptitude-one .aptitude-name{line-height:50px;text-align:center;color:#666;font-size:14px;}
+/* 加入大地 */
+.x-join-title{font-size:14px;border-bottom:1px #ddd dotted;line-height:40px;padding:0 10px;}
+.x-join-left{width:600px;float:left;}
+.x-join-left .slogan{text-indent:2em;font-size:14px;line-height:24px;color:#666;padding:50px 20px;}
+.x-join-main{border:1px #ddd solid;margin:50px 0 20px;padding:20px;}
+.x-join-main .tit{color:#0b900b;font-size:16px;}
+.x-join-main p{font-size:13px;color:#666;line-height:24px;}
+.x-join-main p i{margin:0 10px;color:#333;font-size:14px;font-style: normal;}
+.x-join-other .tit{color:#0b900b;font-size:16px;}
+.x-join-other .t{font-size:14px;color:#333;}
+.x-join-other p{font-size:13px;}
+.x-join-right{width:620px;float:right;}
+.x-join-right .tit{font-size:14px;color:#666;margin:70px 0 10px;line-height:24px;}
+.x-join-right .map{width:600px;height:500px;}
+.x-join-right .map img{width:600px;height:500px;}

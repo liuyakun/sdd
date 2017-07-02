@@ -27,6 +27,10 @@ define([], function () {
                 templateUrl: '/view/aboutSdd/honor.html',
                 dependencies: ['../view/aboutSdd/honorCtrl']
             },
+            '/web/joinUs': {
+                templateUrl: '/view/aboutSdd/joinUs.html',
+                dependencies: ['../view/aboutSdd/joinUsCtrl']
+            },
 
             //-------------------------------------------经典项目-------------------------------------------------
             '/web/project/classicProject': {
