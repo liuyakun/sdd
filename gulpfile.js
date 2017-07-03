@@ -9,6 +9,7 @@ var cleanCSS = require('gulp-clean-css');
 var del = require('del');
 var path = require('path');
 var debug = require('gulp-debug');
+var imagemin = require('gulp-imagemin');
 
 var paths = {};
 
@@ -121,3 +122,14 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', ['build']);
+
+gulp.task('image', function() {
+    gulp.src('src/main/resources/static/images/index/banner/*.{png,jpg,gif,ico}') //压缩图片路径
+        .pipe(imagemin({
+            interlaced: true, //隔行扫描压缩jqp图片
+            optimizationLevel: 7, //0-7
+            progressive: true, //无损压缩jpg
+            multipass: true //多次优化svg直到最优
+        }))
+        .pipe(gulp.dest('src/main/resources/static/images/index/11/')) //输出路径
+})
