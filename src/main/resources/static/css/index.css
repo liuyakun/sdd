@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 /* l-公共模板 */
+body{font-size:14px;}
 .l-header{height:50px;width:100%;background:#033029;z-index:4;position:fixed;}
 .l-lrmain{background-color: #fff;z-index:0;width:100%;min-width:1000px;overflow-x:auto;}
 .l-left{z-index:1;position:fixed;background:#074135;height:100%;width:200px;overflow:hidden;overflow-y:auto;}
