@@ -24,13 +24,13 @@
         <div class="fl" style="line-height:60px;font-size:16px;"><i class="layui-icon" style="font-size:22px;padding-right:5px;">&#xe60c;</i>sdd平台系统</div>
         <button class="layui-btn layui-btn-primary layui-btn-mini fr x-pc" style="margin-top:20px;background:transparent;color:#fff;" ng-click="ic.loginOut();">退出</button>
         <ul class="fr" pc>
-            <li class="layui-nav-item x-pc">
+            <li class="layui-nav-item x-pc"  ng-class="{true:'layui-this'}[stayUrl==1]">
                 <a href="/mge/news">新闻管理</a>
             </li>
-            <li class="layui-nav-item layui-this  x-pc">
+            <li class="layui-nav-item  x-pc" ng-class="{true:'layui-this'}[stayUrl==2]">
                 <a  href="/mge/projectManage">项目管理</a>
             </li>
-            <li class="layui-nav-item  x-pc">
+            <li class="layui-nav-item  x-pc" ng-class="{true:'layui-this'}[stayUrl==3]">
                 <a  href="/mge/modifyPwd">修改密码</a>
             </li>
             <li class="layui-nav-item x-mobile" mobile>
