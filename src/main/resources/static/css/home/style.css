@@ -189,16 +189,22 @@ body {
 
 #submenus li {
 	float: left;
-	margin-right: 30px;
-	margin-bottom: 10px
+	padding:0 10px;
+	margin:10px 0;
+	/* border-right:1px #ddd solid; */
+	line-height:14px;
 }
-
+#submenus li:last-child{
+	border:none !important;
+}
 #submenus li a {
 	color: #B1B1B1;
 	font-size: 13px;
 	cursor: pointer;
 }
-
+#submenus li.now a{
+	color:#333 !important;
+}
 #bpage3 #submenus {
 	margin-bottom: 20px;
 }
@@ -1107,7 +1113,7 @@ body {
 	}
 
 	#slidercontrol {
-		width: 1564px
+		/* width: 1564px */
 	}
 
 	#projectinfo #pibody {
