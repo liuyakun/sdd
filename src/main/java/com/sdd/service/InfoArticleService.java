@@ -108,11 +108,11 @@ public class InfoArticleService implements IInfoArticleService {
      * @return
      */
     @Override
-    public PageImpl<InfoArticleShow> page(String name,Integer infoId,Integer typeId,Integer currentPage, Integer pageSize){
+    public PageImpl<InfoArticleShow> page(String name,Integer infoId,Integer typeId,Integer twoTypeId,Integer currentPage, Integer pageSize){
         currentPage = (currentPage == null || currentPage <= 0)?1:currentPage;
         pageSize = (pageSize == null || pageSize <= 0)?10:pageSize;
         Pageable pageRequest = new PageRequest(currentPage-1,pageSize);
-        Page<InfoArticle> page = infoArticleRepository.page(name,infoId, typeId,pageRequest);
+        Page<InfoArticle> page = infoArticleRepository.page(name,infoId, typeId,twoTypeId,pageRequest);
         List<InfoArticle> content =    page.getContent();
         List<InfoArticleShow> shows = new ArrayList<>();
         for(InfoArticle infoArticle:content){

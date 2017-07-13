@@ -11,17 +11,37 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         $rootScope.stayUrl = 2;
 
         $scope.projectTypeList = [
-            {id:1,typeName:'办公建筑'},
-            {id:2,typeName:'城市规划'},
-            {id:3,typeName:'工业与交通建筑'},
-            {id:4,typeName:'建筑改造及装饰装修'},
-            {id:5,typeName:'教育建筑'},
-            {id:6,typeName:'酒店与休闲建筑'},
-            {id:7,typeName:'居住建筑'},
-            {id:8,typeName:'绿化与景观'},
-            {id:9,typeName:'商业与服务建筑'},
-            {id:10,typeName:'文化与体育建筑'},
-            {id:11,typeName:'医疗与科研建筑'}
+            {
+                id:1,
+                typeName:'建筑设计',
+                childrenList:[
+                    {id:11,typeName:'办公建筑'},
+                    {id:12,typeName:'居住建筑'},
+                    {id:13,typeName:'教育建筑'},
+                    {id:14,typeName:'商业与服务建筑'},
+                    {id:15,typeName:'酒店与休闲建筑'},
+                    {id:16,typeName:'文化与体育建筑'},
+                    {id:17,typeName:'医疗与科研建筑'},
+                    {id:18,typeName:'工业与交通建筑'}
+                ]
+            },
+            {id:2,typeName:'城市规划',childrenList:[]},
+            {
+                id:3,
+                typeName:'室内设计',
+                childrenList:[
+                    {id:31,typeName:'建筑改造'},
+                    {id:32,typeName:'装饰装修'}
+                ]
+            },
+            {
+                id:4,
+                typeName:'景观设计',
+                childrenList:[
+                    {id:41,typeName:'绿化'},
+                    {id:42,typeName:'景观'}
+                ]
+            },
         ];
 
         //--------------------------------------------------列表------------------------------------------------------
@@ -120,6 +140,10 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             var obj = document.getElementById('doc_1') ;
             obj.outerHTML = obj.outerHTML;
             //---------------------------------end-----------------------
+
+            var dd = document.getElementById("dd1");
+            dd.innerHTML = "";
+
             this.addNewsData = {};
             ue.ready(function(){
                 ue.setContent("");
@@ -183,9 +207,18 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             $scope.pathArray = updateData.filePath.split("&");
             var dd2 = document.getElementById("dd2");
             dd2.innerHTML = "";
+            console.log($scope.updateData);
             for (var i = 0; i < $scope.pathArray.length; i++) {
                 dd2.innerHTML += "<div style='float:left;padding-right: 20px;' ><img style='width: 180px;height: 210px;' src='/upload/" + $scope.pathArray[i] + "'  /> </div>";
             }
+
+            for(var i = 0;i<$scope.projectTypeList.length;i++){
+                if($scope.projectTypeList[i].id === $scope.updateData.typeId){
+                    $scope.twoTypeList = $scope.projectTypeList[i].childrenList;
+                    break;
+                }
+            }
+
             ueModify.ready(function(){
                 ueModify.setContent(updateData.content);
             });
@@ -374,6 +407,24 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             } else{
                 this.modifyLeftLength = 0;
                 //return;
+            }
+        };
+
+
+        $scope.twoTypeList = [];
+        $scope.selectChange = function(type){
+            var oneCaseId = null;
+            if(type == "add"){
+                oneCaseId = _this.addNewsData.typeId;
+            }else{
+                oneCaseId = $scope.updateData.typeId;
+            }
+            $scope.twoTypeList = [];
+            for(var i = 0;i<$scope.projectTypeList.length;i++){
+                if($scope.projectTypeList[i].id === oneCaseId){
+                    $scope.twoTypeList = $scope.projectTypeList[i].childrenList;
+                    break;
+                }
             }
         };
 

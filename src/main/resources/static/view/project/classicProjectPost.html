@@ -1,4 +1,4 @@
-<div ng-controller="classicProjectPostCtrl">
+<div ng-controller="classicProjectPostCtrl as cc">
  
         <div id="content" class="autocw">
             <div id="projectcontent">
@@ -55,32 +55,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="pcright" class="fr">
+                    <div id="pcright" class="fr" ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
                         <a href="" id="pcinfo" class="post-info">
-                            <span>查看介绍</span>
+                            <span ng-click="contentShow=true">查看介绍</span>
                         </a>
                     </div>
                     <div class="clear"></div>
                 </div>
-                <div id="projectinfo" class="hide">
+                <div id="projectinfo" class="" ng-show="contentShow"
+                     ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
                     <div id="pibody">
-                        <p id="pibtitle">北京新机场</p>
-                        <div id="pibpost">
-                            <p>
-                                总投资约800亿元，将建设4条跑道、150个机位的客机坪、24个机位的货机坪、14个机位的维修机坪;建设70万平方米的航站楼，主楼、指廊分别满足7200万和4500万人次使用需求。北京新机场位于北京市南端大兴区榆垡镇境内，大兴区南各庄与廊坊接壤处。
-                            </p>
-                            <p>
-                                <br/>
-                            </p>
-                            <p>建设单位：北京新机场建设指挥部</p>
-                            <p>设计时间：2015年</p>
-                            <p>
-                                建成时间：在建
-                                <br/>
-                                面积（平方米）：103万
-                            </p>
-                            <p>合作公司：中国民航机场建设集团</p>
-                        </div>
+                        <div ng-bind-html="cc.trustedBody"></div>
                         <a class="close" href=""></a>
                     </div>
                 </div>

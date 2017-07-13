@@ -2,7 +2,7 @@
  * Created by 刘亚坤
  */
 define(['../../script/sdd','jquery','../../script/service/infoArticleService'],function(module,$,InfoArticleService){
-    module.controller('classicProjectPostCtrl',function($resource,$scope,$rootScope,$timeout,$location,$routeParams){
+    module.controller('classicProjectPostCtrl',function($resource,$scope,$rootScope,$timeout,$location,$routeParams,$sce){
 
         var _this = this;
         $scope.pid = $routeParams.id;
@@ -30,8 +30,13 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                 $timeout(function(){
                     $('#rightslider ul').bxSlider({pager:false,auto: false});
                 },1000);
+                _this.trustedBody = $sce.trustAsHtml(data.message.content);
+                console.log(_this.trustedBody);
+                console.log(_this.project);
             });
         };
+
+        $scope.contentShow = false;
 
         this.getByIdInfoArticle();
 
@@ -39,6 +44,13 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
             var selectIndex = (index + 1) * 1240
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
+
+        this.isFocus = false;
+        $(document).click(function(){
+            if(!_this.isFocus){
+                $scope.contentShow = false;
+            }
+        });
 
     });
 });

@@ -60,24 +60,27 @@
                     /{{nc.maxLength}}字</div>
                     <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.titleShow">项目名不能为空</i>
                 </div>
-                 <div class="layui-form-item">
+                <div class="layui-form-item">
                     <label class="layui-form-label">项目分类：</label>
                     <div class="layui-input-inline" style="width:300px;z-index:1000">
-                      <select id="addSelect"  style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" 
+                      <select id="addSelect"  style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" ng-change = selectChange('add');
                               ng-model="nc.addNewsData.typeId"
                               ng-options="pl.id as pl.typeName for pl in projectTypeList">
+                              <option value="">请选择</option>
                       </select>
+
                     </div>
                     <!-- 二级标题 -->
                     <div class="layui-input-inline" style="width:300px;z-index:1000">
                       <select style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" 
-                              ng-model="nc.addNewsData.typeId"
-                              ng-options="pl.id as pl.typeName for pl in projectTypeList">
+                              ng-model="nc.addNewsData.twoTypeId"
+                              ng-options="pl.id as pl.typeName for pl in twoTypeList">
+                          <option value="">请选择</option>
                       </select>
                     </div>
 
                      <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.typeIdShow">项目类型不能为空</i>
-                  </div>
+                </div>
                   <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">项目图片：</label>
                     <div class="layui-input-block">
@@ -118,7 +121,7 @@
                 <legend>项目列表-修改</legend>
             </fieldset>
 
-            <form class="layui-form" action="">
+            <form class="" action="">
                 <div class="layui-form-item">
                     <label class="layui-form-label">项目标题：</label>
                     <div class="layui-input-inline" style="width:500px;">
@@ -126,25 +129,28 @@
                     <div class="layui-form-mid layui-word-aux">还可以输入<i class="color2 x-h3 mr2" ng-bind="updateData.modifyLeftLength">10</i>/{{updateData.maxLength}}字</div>
                     <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="updateData.titleShow">文章标题不能为空</i>
                 </div>
-                 <div class="layui-form-item">
-                        <label class="layui-form-label">项目分类：</label>
-                         <!-- <div class="layui-input-inline" style="width:300px;z-index:1000">
-                             <sapn ng-bind="updateData.typeId | typeId"></sapn>
-                         </div> -->
-                         <div class="layui-input-inline" style="width:300px;z-index:1000">
-                              <select id="updateSelect" name="interest" lay-filter="aihao" style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" 
-                                      ng-model="nc.updateTypeId"
-                                      ng-options="pl.id as pl.typeName for pl in projectTypeList">
-                              </select>
-                          </div>
-                          <!-- 二级分类 -->
-                          <div class="layui-input-inline" style="width:300px;z-index:1000">
-                            <select style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" 
-                                    ng-model="nc.addNewsData.typeId"
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">项目分类：</label>
+                        <div class="layui-input-inline" style="width:300px;z-index:1000">
+                            <select  style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;" ng-change = selectChange('update');
+                                    ng-model="updateData.typeId"
                                     ng-options="pl.id as pl.typeName for pl in projectTypeList">
+                            <option value="">请选择</option>
                             </select>
-                          </div>
-                  </div>
+
+                            </div>
+                            <!-- 二级标题 -->
+                            <div class="layui-input-inline" style="width:300px;z-index:1000">
+                            <select style="width: 98%;height: 40px;border: 1px #f1f1f1 solid;color:#666;padding-left: 1%;padding-right: 1%;border-radius:3px;"
+                                            ng-model="updateData.twoTypeId"
+                                            ng-options="pl.id as pl.typeName for pl in twoTypeList">
+                            <option value="">请选择</option>
+                            </select>
+                            </div>
+                        <i class="fl x-h6 colorred  lineheight30 mrleft20 " ng-show="nc.typeIdShow">项目类型不能为空</i>
+                    </div>
+
                   <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">项目图片：</label>
                     <div class="layui-input-block">

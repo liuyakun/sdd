@@ -1,13 +1,14 @@
 <div ng-controller="classicProjectCtrl as cp">
     <div class="project-title">
-        <a>一级标题</a>
+        <a ng-repeat="p in projectTypeList" ng-class="{now:checkTypeNow == p.id}" ng-bind="p.typeName" ng-click="pageInfoArticleByType(p.id,0,1)"></a>
+        <!--<a>一级标题</a>
         <a class="now">一级标题</a>
-        <a>一级标题</a>
+        <a>一级标题</a>-->
         <div class="clear"></div>
     </div>
     <ul id="submenus" class="autocw">
-        <li ng-repeat="p in projectTypeList"><!--  class="now" -->
-            <a ng-bind="p.typeName" ng-click="pageInfoArticleByType(p.id)"></a>  
+        <li ng-repeat="p in twoTypeList"><!--  class="now" -->
+            <a ng-bind="p.typeName" ng-click="pageInfoArticleByType(0,p.id,0)"></a>
         </li>
         <div class="clear"></div>
     </ul>

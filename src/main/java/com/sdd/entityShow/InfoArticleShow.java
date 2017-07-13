@@ -14,11 +14,12 @@ public class InfoArticleShow {
     private String tdkTitle;  //标题
     private String tdkKeyword;  //keyword
     private Integer typeId; //项目类型ID 1:办公建筑，2:城市规划，3:工业与交通建筑，4:建筑改造及装饰装修,5:教育建筑,6:酒店与休闲建筑,7:居住建筑,8:绿化与景观,9:商业与服务建筑,10:文化与体育建筑,11:医疗与科研建筑
+    private Integer twoTypeId;  //项目二级菜单ID
 
     private String filePath; //项目图片地址
 
-    private Date createDate;  //创建时间
     private Date modifyDate;  //修改时间
+    private Date createDate;  //创建时间
     private String createUser; //创建用户
     private String modifyUser; //修改用户
     private String isEnable;      //是否可用
@@ -101,6 +102,14 @@ public class InfoArticleShow {
 
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
+    }
+
+    public Integer getTwoTypeId() {
+        return twoTypeId;
+    }
+
+    public void setTwoTypeId(Integer twoTypeId) {
+        this.twoTypeId = twoTypeId;
     }
 
     public Date getCreateDate() {

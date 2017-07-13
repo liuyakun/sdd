@@ -17,6 +17,7 @@ public class InfoArticleUtil {
         infoArticle.setTdkDescription(show.getTdkDescription());
         infoArticle.setTdkKeyword(show.getTdkKeyword());
         infoArticle.setTypeId(show.getTypeId());
+        infoArticle.setTwoTypeId(show.getTwoTypeId());
         infoArticle.setFilePath(show.getFilePath());
         infoArticle.setTdkTitle(show.getTdkTitle());
         infoArticle.setCreateDate(show.getCreateDate());
@@ -38,6 +39,7 @@ public class InfoArticleUtil {
         show.setTdkDescription(infoArticle.getTdkDescription());
         show.setTdkKeyword(infoArticle.getTdkKeyword());
         show.setTypeId(infoArticle.getTypeId());
+        show.setTwoTypeId(infoArticle.getTwoTypeId());
         show.setFilePath(infoArticle.getFilePath());
         show.setTdkTitle(infoArticle.getTdkTitle());
         show.setCreateDate(infoArticle.getCreateDate());

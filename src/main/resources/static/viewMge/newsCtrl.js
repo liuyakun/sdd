@@ -104,6 +104,10 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             var obj = document.getElementById('doc_1') ;
             obj.outerHTML = obj.outerHTML;
             //---------------------------------end-----------------------
+
+            var dd = document.getElementById("dd1");
+            dd.innerHTML = "";
+
             this.addNewsData = {};
             ue.ready(function(){
                 ue.setContent("");
