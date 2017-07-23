@@ -15,6 +15,7 @@
     <script type="text/javascript" src="/script/js/org.js" data-main="indexMain"></script>
 </head>
 <body style="position: relative;overflow-x:hidden;">
+<div class="x-inner">
 <div id="indexslider">
     <ul>
         <li>
@@ -39,13 +40,14 @@
         </li>
     </ul>
 </div>
+</div>
 <div id="container">
-    <div id="header" class="autocw" style="width:auto;padding-left:30px;padding-right:30px;background:rgba(0,0,0,.7);">
+    <div id="header" class="x-inner" style="width:auto;padding-left:30px;padding-right:30px;background:rgba(0,0,0,.7);">
         <a id="logo">
             <img src="../images/logoWhite.png" width="250" />
         </a>
-        <!--<a href="" id="openmenu" class="fl"><img src="/images/openmw.png" alt=""></a>-->
-        <ul style="display:block">
+        <!-- <a href="" id="openmenu" class="fl"><img src="/images/openmw.png" alt=""></a> -->
+        <ul class="menu-pc">
             <li>
                 <a href="/web/aboutSdd/gmSpeech" style="color:#a8a7a7;">关于大地</a>
             </li>
@@ -58,21 +60,47 @@
             <li>
                 <a style="color:#a8a7a7;" href="/web/joinUs">加入大地</a>
             </li>
-            <li id="move"></li>
         </ul>
+        <div class="move" id="move" onclick="ccc()">
+        <img src="/images/openmw.png">
+
+            <div class="menu-mini">
+                <a href="/web/aboutSdd/gmSpeech" style="color:#a8a7a7;">关于大地</a>
+                <a href="/web/project/classicProject" style="color:#a8a7a7;">经典项目</a>
+                <a href="/web/news/newsList" style="color:#a8a7a7;">新闻媒体</a>
+                <a style="color:#a8a7a7;" href="/web/joinUs">加入大地</a>
+            </div>
+        </div>
         <div class="clear"></div>
     </div>
     <div id="content"></div>
-    <div id="footer" class="autocw" style="background: #000;background: rgba(0,0,0,.8);width: 100%;color: #767676;">
-        <div class="fr" style="margin-right: 20px;">
-            COPYRIGHT © SOLUTION DESIGN DEVELOPMENT ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;&nbsp;
+    <div id="footer" class="footer x-inner" style="">
+        <div class="fr pc">
+            COPYRIGHT © SOLUTION DESIGN DEVELOPMENT ALL RIGHTS RESERVED 
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="">网站地图</a>
             <span>|</span>
             <a href="/web/joinUs">联系我们</a>
             <span>|</span>
             <a href="http://weibo.com/sddarch?sudaref=login.sina.com.cn&retcode=6102">新浪微博</a>
         </div>
+        <div class="mini">COPYRIGHT © SOLUTION DESIGN DEVELOPMENT ALL RIGHTS RESERVED </div>
     </div>
 </div>
+<script>
+    // 菜单栏打开关闭
+    var aa;
+    aa = false;
+    $("#move .menu-mini").css("display","none");
+    function ccc(){
+        aa = !aa;
+        console.log(aa);
+        if(aa){
+            $("#move .menu-mini").css("display","block");
+        } else {
+            $("#move .menu-mini").css("display","none");
+        }
+    }
+</script>
 </body>
 </html>

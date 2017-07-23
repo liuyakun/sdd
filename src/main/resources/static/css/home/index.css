@@ -7,3 +7,21 @@
 
 .about_article h2{color:#343434;font-size:18px;line-height:30px;font-weight:normal;;font-style:normal;}
 .about_article h2 strong{font-size: 24px;color: #ffae00;}
+@media screen and (max-width:600px){ 
+.move{width:50px; height:50px;background:url(images/openmw.png);display:block;float:right;line-height:50px;color:#ccc;font-size:20px;}
+.menu-pc{display:none;}
+.move i{background:url(./images/soi.png);width:10px;height:10px;display:inline-block;}
+#header{padding: 10px !important;}
+.mini{display:block;}
+.pc{display:none;}
+.footer{background: rgba(0,0,0,.8);width: 100%;color: #767676;text-align:center;position:fixed;bottom:0;height:auto !important;line-height:20px !important;padding:10px 0;}
+} 
+@media screen and (min-width:601px){ 
+.move{width:50px; height:50px;background:url(images/openmw.png);display:none;}
+.mini{display:none;}
+.pc{display:block;}
+.footer{background: rgba(0,0,0,.8);width: 100%;color: #767676;}
+.footer .fr{margin-right: 20px;}
+} 
+.menu-mini{width:100px;height:auto;background:#fff;position:absolute;margin-left:-30px;margin-top:45px;}
+.menu-mini a{width:100px;color:#ccc;line-height:20px;text-align:center;font-size:14px;display:block;border-bottom:1px #f1f1f1 solid;}
