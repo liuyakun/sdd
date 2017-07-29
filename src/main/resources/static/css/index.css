@@ -32,17 +32,19 @@ table.main tbody tr td{color:#666;font-size:12px;padding:8px 8px;line-height:22p
 table.main tbody tr td a.link{color:#3D94EA;padding:0 5px;}
 table.main tbody tr td a.link:hover{color:#09498A;text-decoration:underline !important;}
 table.main tbody tr:nth-child(odd){background-color:#fcfcfc;}
-.autocw {width: 1240px !important;}
+.autocw {width: 1140px !important;}
 body{}
+#submenus .now{color:#3b3b3b !important;}
+.nav-index li a{color:#666}
 /* newsList */
-.x-inner{width:1240px;margin:0 auto;}
+.x-inner{width:1140px;margin:0 auto;}
 .new-List{width:100%;}
 .new-List .new-List-title{font-size:16px;font-weight:bold;border-bottom:2px #009300 solid;padding:10px 20px 10px 0;width:100px;margin-bottom:20px;}
 .new-List ul.new-List-main{}
 .new-List ul.new-List-main li.list-pt-li{width:100%;border-bottom:1px #f1f1f1 solid;padding-bottom:20px;margin-bottom:20px;}
 .new-List ul.new-List-main li.list-pt-li .list-pt-pic{width:300px;height:200px;}
 .new-List ul.new-List-main li.list-pt-li .list-pt-pic img{width:300px;height:200px;}
-.new-List ul.new-List-main li.list-pt-li .main{width:900px;}
+.new-List ul.new-List-main li.list-pt-li .main{width:800px;}
 .new-List ul.new-List-main li.list-pt-li a:hover{cursor:pointer;color:#ddd;}
 .new-List ul.new-List-main li.list-pt-li .main a.tit{font-size:16px;color:#333;font-weight:bold;}
 .new-List ul.new-List-main li.list-pt-li .main a.tit:hover{color:#009300;}
@@ -51,7 +53,7 @@ body{}
 .new-List ul.new-List-main li.list-pt-li .main .newsOne-time i{padding:0 10px;font-style:normal;}
 .new-adds-box{width:100%;height:240px;border:1px #f1f1f1 solid;}
 .new-adds-box .inner{height:200px;padding:20px;}
-.new-adds-box .ad{width:386px;height:200px;float:left;}
+.new-adds-box .ad{width:353px;height:200px;float:left;overflow:hidden;}
 .new-adds-box .ad img{width:386px;height:200px;}
 .ml20{margin-left:20px;}
 
@@ -90,7 +92,7 @@ body{}
 /* 公司總覽 */
 #leftcontent #leftbody p{text-indent:2em;}
 /* 资质 */
-.aptitude-title{font-size:16px;color:000;line-height:20px;}
+.aptitude-title{font-size:16px;color:333;line-height:20px;font-family: fantasy;}
 .aptitude-main{width:1050px;margin:20px auto;}
 .aptitude-main .aptitude-one{width:502px;height:450px;margin:10px;}
 .aptitude-main .aptitude-one .aptitude-pic{width:500px;height:400px;border:1px #ccc solid;}
@@ -107,14 +109,15 @@ body{}
 .x-join-other .tit{color:#0b900b;font-size:16px;}
 .x-join-other .t{font-size:14px;color:#333;}
 .x-join-other p{font-size:13px;}
-.x-join-right{width:620px;float:right;}
+.x-join-right{width:520px;float:right;}
 .x-join-right .tit{font-size:14px;color:#666;margin:70px 0 10px;line-height:24px;}
-.x-join-right .map{width:600px;height:500px;}
-.x-join-right .map img{width:600px;height:500px;}
+.x-join-right .map{width:500px;height:500px;}
+.x-join-right .map img{width:500px;height:500px;}
 /* 经典项目 */
 .project-title{margin: 20px 0;}
 .project-title a{color:#666;font-size:14px;margin-right:20px;display:block;float:left;padding:0 5px;line-height:24px;cursor:pointer;}
 .project-title a.now{color:#fff;background:#2db12d;}
 a.post-info span{line-height:58px;text-align:center;color:#949292;font-size:13px;}
 a.post-info:hover span{color:#fff;}
+/* .pibody{color:#fff;} */
 

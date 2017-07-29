@@ -7,13 +7,13 @@
         <div class="clear"></div>
     </div>
     <ul id="submenus" class="autocw">
-        <li ng-repeat="p in twoTypeList"><!--  class="now" -->
-            <a ng-bind="p.typeName" ng-click="pageInfoArticleByType(0,p.id,0)"></a>
+        <li ng-repeat="p in twoTypeList">
+            <a ng-bind="p.typeName" ng-class="{now:checkTypeNowTwo == p.id}" ng-click="pageInfoArticleByType(0,p.id,0)"></a>
         </li>
         <div class="clear"></div>
     </ul>
     <div id="content" class="autocw" style="min-height: 536px;">
-        <div id="listcontent" class="zScroll" tabindex="5000" style="overflow-y: hidden; outline: none;">
+        <div id="listcontent" tabindex="5000" style="overflow-y: hidden; outline: none;">
             <div ng-repeat="pl in cp.projectList" class="pcitem projectitem">
                 <a ng-click="jumpDefault(pl.id);">
                     <img ng-src="{{pl.defaultPath}}" width="280" height="180">

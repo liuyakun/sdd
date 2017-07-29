@@ -7,6 +7,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         var _this = this;
 
         $scope.checkTypeNow = 0;
+        $scope.checkTypeNowTwo = 0;
         $scope.projectTypeList = [
             {id:0,typeName:'全部',childrenList:[]},
             {
@@ -94,6 +95,8 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
             }
             if(twoTypeId === 0){
                 twoTypeId = null;
+            } else{
+                    $scope.checkTypeNowTwo = twoTypeId;
             }
             _this.searchData.typeId = typeId;
             _this.searchData.twoTypeId = twoTypeId;

@@ -7,14 +7,6 @@ define([], function () {
                 templateUrl: '/view/aboutSdd/gmSpeech.html',
                 dependencies: ['../view/aboutSdd/gmSpeedCtrl']
             },
-            '/web/aboutSdd/companyOverview': {
-                templateUrl: '/view/aboutSdd/companyOverview.html',
-                dependencies: ['../view/aboutSdd/companyOverviewCtrl']
-            },
-            '/web/aboutSdd/coreIdea': {
-                templateUrl: '/view/aboutSdd/coreIdea.html',
-                dependencies: ['../view/aboutSdd/coreIdeaCtrl']
-            },
             '/web/aboutSdd/serviceCategory': {
                 templateUrl: '/view/aboutSdd/serviceCategory.html',
                 dependencies: ['../view/aboutSdd/serviceCategoryCtrl']
@@ -23,13 +15,31 @@ define([], function () {
                 templateUrl: '/view/aboutSdd/skillSpecialty.html',
                 dependencies: ['../view/aboutSdd/skillSpecialtyCtrl']
             },
-            '/web/aboutSdd/honor': {
-                templateUrl: '/view/aboutSdd/honor.html',
-                dependencies: ['../view/aboutSdd/honorCtrl']
-            },
             '/web/joinUs': {
                 templateUrl: '/view/aboutSdd/joinUs.html',
                 dependencies: ['../view/aboutSdd/joinUsCtrl']
+            },
+
+            // 新的五個栏目
+            '/web/aboutSdd/companyOverview': {
+                templateUrl: '/view/aboutSdd/companyOverview.html',
+                dependencies: ['../view/aboutSdd/companyOverviewCtrl']
+            },
+            '/web/aboutSdd/boardMember': {
+                templateUrl: '/view/aboutSdd/boardMember.html',
+                dependencies: ['../view/aboutSdd/boardMemberCtrl']
+            },
+            '/web/aboutSdd/org': {
+                templateUrl: '/view/aboutSdd/org.html',
+                dependencies: ['../view/aboutSdd/orgCtrl']
+            },
+            '/web/aboutSdd/cream': {
+                templateUrl: '/view/aboutSdd/cream.html',
+                dependencies: ['../view/aboutSdd/creamCtrl']
+            },
+            '/web/aboutSdd/enterpriseQuality': {
+                templateUrl: '/view/aboutSdd/enterpriseQuality.html',
+                dependencies: ['../view/aboutSdd/enterpriseQualityCtrl']
             },
 
             //-------------------------------------------经典项目-------------------------------------------------
