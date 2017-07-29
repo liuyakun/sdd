@@ -38,8 +38,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 id:4,
                 typeName:'景观设计',
                 childrenList:[
-                    {id:41,typeName:'绿化'},
-                    {id:42,typeName:'景观'}
+                    {id:41,typeName:'市政绿化'},
+                    {id:42,typeName:'景观园林'}
                 ]
             },
         ];
