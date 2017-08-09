@@ -1,11 +1,11 @@
 <div ng-controller="classicProjectPostCtrl as cc">
  
-        <div id="content" class="autocw">
+        <div id="content">
             <div id="projectcontent">
                 <div id="rightslider">
                     <ul id="rightsliderUl">
                         <li ng-repeat="f in fileList">
-                            <img ng-src="{{f}}" width="1736" height="1000" />
+                            <img ng-src="{{f}}" width="" height="1000" />
                         </li>
                     </ul>
                 </div>
@@ -16,7 +16,7 @@
                     </span>
                     <div id="slidercontrol" class="fl">
                         <ul style="width:1012px">
-                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)">
+                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)" style="background:#585858;">
                                 <a href="">
                                     <img ng-src="{{f}}" width="90" height="58" />
                                     <div class="slidemask"></div>
