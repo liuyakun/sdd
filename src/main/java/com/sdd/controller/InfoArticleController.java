@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -78,8 +79,9 @@ public class InfoArticleController {
      */
     @RequestMapping(value = "/infoArticle/{id}", method = RequestMethod.DELETE)
     public ObjectResult delete(@PathVariable("id")Integer id,
-                               @CookieValue(value = "token_staff", required = false) String token) {
-        int delete = iInfoArticleService.delete(id);
+                               @CookieValue(value = "token_staff", required = false) String token,
+                                HttpServletRequest request) {
+        int delete = iInfoArticleService.delete(id,request);
         if(delete==1){
             return  new ObjectResult("true","删除成功");
         }

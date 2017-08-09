@@ -72,12 +72,12 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         this.deleteId = "";
         this.checkDelete = function(id){
             this.deleteId = id;
-            $('#deleteShow').slideDown("slow");
+            $('#deleteShow').show();
         };
         //取消删除
         this.cancelDelete = function(){
             this.deleteId = "";
-            $('#deleteShow').slideUp("slow");
+            $('#deleteShow').hide(200);
         };
         //确认删除
         this.confirmDelete = function(){

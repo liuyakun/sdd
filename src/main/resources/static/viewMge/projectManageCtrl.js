@@ -107,12 +107,12 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         this.deleteId = "";
         this.checkDelete = function(id){
             this.deleteId = id;
-            $('#deleteShow').slideDown("slow");
+            $('#deleteShow').show();
         };
         //取消删除
         this.cancelDelete = function(){
             this.deleteId = "";
-            $('#deleteShow').slideUp("slow");
+            $('#deleteShow').hide(200);
         };
         //确认删除
         this.confirmDelete = function(){
@@ -127,6 +127,16 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
             });
         };
         //--------------------------------------------删除end----------------------------------------------------
+
+
+        //loading
+        $('#loadShow').hide();
+        this.loadIsShow = function(){
+            $('#loadShow').show();
+        };
+        this.loadIsHide = function(){
+            $('#loadShow').hide(200);
+        };
 
         //--------------------------------------------新增-------------------------------------------------------
         //点击新增
@@ -182,6 +192,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 this.contentShow = true;
                 return;
             }
+            $('#loadShow').show();
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
                     _this.uploadFile(data.message,1);
@@ -254,6 +265,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 this.contentShow = true;
                 return;
             }
+            $('#loadShow').show();
             infoArticleService.updateInfoArticle($scope.updateData,function(data){
                 if(data.status === "true"){
                     var docObj2 = document.getElementById("doc_2");
@@ -265,6 +277,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 }else{
                     console.log(data);
                 }
+                $('#loadShow').hide(200);
             });
         };
 
@@ -377,6 +390,7 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                         }else{
                             _this.updateReturn();
                         }
+                        $('#loadShow').hide(200);
                         _this.pageInfoArticle();
                     },
                     error: function (data, status, e) {

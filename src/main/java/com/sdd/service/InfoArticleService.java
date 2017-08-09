@@ -6,6 +6,7 @@ import com.sdd.entityShow.IInfoArticleService;
 import com.sdd.entityShow.InfoArticleShow;
 import com.sdd.entityVo.InfoArticleUtil;
 import com.sdd.repository.InfoArticleRepository;
+import com.sdd.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,7 +14,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -74,10 +78,19 @@ public class InfoArticleService implements IInfoArticleService {
      * @return  1成功  2 失败
      */
     @Override
-    public int delete(Integer id){
+    public int delete(Integer id, HttpServletRequest request){
         InfoArticle one = infoArticleRepository.findOne(id);
         if(one==null){
             return  2;
+        }
+        ToolUtil tu = new ToolUtil();
+        String [] strs = one.getFilePath().split("&");
+        //设置相对路径
+        String realPath = request.getSession().getServletContext().getRealPath("/upload");
+        File f = new File(realPath);
+        for(int i = 0;i < strs.length;i++){
+            String uploadPath = realPath + File.separator + strs[i];
+            tu.deleteFile(uploadPath);
         }
         infoArticleRepository.delete(id);
         return 1;

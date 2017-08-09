@@ -179,7 +179,8 @@
             </form>
         </div>
         <!--修改end-->
-        <div class="layui-layer layui-layer-page  layer-anim"  id="deleteShow" style="z-index: 19891017; top:20%; left:40%;display:none;">
+    <div class="modalbg" id="deleteShow">
+        <div class="layui-layer layui-layer-page  layer-anim" style="z-index: 19891017; top:20%; left:40%;">
             <div class="layui-layer-title" style="cursor: move;">提示</div>
             <div id="LAY_demoauto" class="layui-layer-content">
                 <div style="padding: 20px 100px;">删除不可恢复，请问是否需要删除？</div>
@@ -193,6 +194,13 @@
             </div>
             <span class="layui-layer-resize"></span>
         </div>
+    </div>
+
+    <div class="modalbg" id="loadShow">
+        <div class="mrpit46">
+            <div class="center x-loading"><img src="images/loading.gif" alt=""></div>
+        </div>
+    </div>
 <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use(['element','form', 'layedit', 'laydate', 'layer'], function(){

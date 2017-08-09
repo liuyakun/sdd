@@ -2,6 +2,8 @@ package com.sdd.entityShow;
 
 import org.springframework.data.domain.PageImpl;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface IInfoArticleService {
     /**
      * 新增
@@ -22,7 +24,7 @@ public interface IInfoArticleService {
      * @param id
      * @return  1成功  2 失败
      */
-    public int delete(Integer id);
+    public int delete(Integer id,HttpServletRequest request);
 
 
     /**
