@@ -40,7 +40,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         this.getByIdInfoArticle();
 
         $scope.selectCarousel = function(index){
-            var selectIndex = (index + 1) * 1180
+            var selectIndex = (index + 1) * 1536
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
 
@@ -67,7 +67,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                     i = 0;
                 }
             }
-            var selectIndex = (i + 1) * 1180
+            var selectIndex = (i + 1) * 1536
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
 
@@ -95,7 +95,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                 }
             }
             var str = $("#rightsliderUl").css('transform');
-            var index = -str.split(",")[4] / 1180 - 1;
+            var index = -str.split(",")[4] / 1536 - 1;
             $scope.sliderCarousel(index,sliderInfo.getSlideCount(),type);
             setTimeout(function(){
                 $scope.moveWheel1 = true;
