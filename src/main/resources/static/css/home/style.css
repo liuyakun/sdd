@@ -1121,8 +1121,9 @@ body {
 }
 
 .bx-wrapper img {
-	max-width: 100%;
+	width: 100%;
 	display: block;
+	height:auto;
 }
 
 .bx-wrapper .bx-viewport {

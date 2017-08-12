@@ -1,10 +1,10 @@
 <div ng-controller="classicProjectPostCtrl as cc">
  
-        <div id="content">
-            <div id="projectcontent">
-                <div id="rightslider">
-                    <ul id="rightsliderUl">
-                        <li ng-repeat="f in fileList">
+        <div>
+            <div id="projectcontent" style="height:700px;">
+                <div id="rightslider" style="height:700px;">
+                    <ul id="rightsliderUl" style="height:700px;">
+                        <li ng-repeat="f in fileList" style="background:#585858;overflow-y:auto !important;height:700px;">
                             <img ng-src="{{f}}" width="" height="1000" />
                         </li>
                     </ul>
@@ -14,9 +14,9 @@
                         <span>01</span>
                         / {{fileList.length}}
                     </span>
-                    <div id="slidercontrol" class="fl">
+                    <div id="slidercontrol" class="fl" style="margin-left:100px;">
                         <ul style="width:1012px">
-                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)" style="background:#585858;">
+                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)">
                                 <a href="">
                                     <img ng-src="{{f}}" width="90" height="58" />
                                     <div class="slidemask"></div>
@@ -25,11 +25,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="pcright" class="fr" ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
-                        <a href="" id="pcinfo" class="post-info">
-                            <span ng-click="contentShow=true">查看介绍</span>
-                        </a>
-                    </div>
+                  <!--   <div id="pcright" class="fr" ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
+                      <a href="" id="pcinfo" class="post-info">
+                          <span ng-click="contentShow=true">查看介绍</span>
+                      </a>
+                  </div> -->
                     <div class="clear"></div>
                 </div>
                 <div id="projectinfo" class="" ng-show="contentShow"

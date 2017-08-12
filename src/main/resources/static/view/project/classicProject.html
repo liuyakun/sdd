@@ -39,10 +39,10 @@
                     <div class="img">
                         <img ng-src="{{pl.defaultPath}}" height="180">
                     </div>
-                    <span class="css3-box">
+                    <span class="css3-box" ng-click="jumpDefault(pl.id);">
                         <div class="layermax"></div>
                     </span>
-                    <div class="inner">
+                    <div class="inner" ng-click="jumpDefault(pl.id);">
                         <h5 ng-bind="pl.title"></h5>
                         <h6>办公建筑</h6>
                     </div>
