@@ -13,12 +13,12 @@
         <div class="clear"></div>
     </ul>
     <div id="content" style="min-height: 536px;">
-        <div id="listcontent" tabindex="5000" style="overflow-y: hidden; outline: none;">
-            <div ng-repeat="pl in cp.projectList" class="pcitem projectitem">
+        <div class="listcontent index-block-tjcar" tabindex="5000" style="">
+            <!-- <div ng-repeat="pl in cp.projectList" class="pcitem projectitem">
                 <a ng-click="jumpDefault(pl.id);">
-                    <div style="width:280px;height:180px;background:#585858;">
+                    <div class="cP-img">
                         <div style="width:auto;margin:0 auto">
-                            <img ng-src="{{pl.defaultPath}}" height="180">
+                            <img ng-src="{{pl.defaultPath}}" height="180" class="img">
                          </div>
                     </div>
                     <div class="pcitemcc">
@@ -26,16 +26,51 @@
                             <p class="pcitemtitle" ng-bind="pl.title"></p>
                             <p class="pcitemfoot">
                                 办公建筑
-                                <!-- <span class="fr" ng-bind="pl.createDate | date:'yyyy-MM-dd'"></span> -->
+                                <span class="fr" ng-bind="pl.createDate | date:'yyyy-MM-dd'"></span>
                             </p>
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
+
+
+
+                <span class="clearfix one mmm" ng-repeat="pl in cp.projectList">
+                    <div class="img">
+                        <img ng-src="{{pl.defaultPath}}" height="180">
+                    </div>
+                    <span class="css3-box">
+                        <div class="layermax"></div>
+                    </span>
+                    <div class="inner">
+                        <h5 ng-bind="pl.title"></h5>
+                        <h6>办公建筑</h6>
+                    </div>
+                </span>
+
 
             <div class="listloading" data-maxpage="2" data-url="http://www.biad.com.cn/project.php?rec=1&amp;page=" style="display: none;">
                 <span>没有更多内容</span>
             </div>
         </div>
     </div>
+
+        <script>
+            $(document).ready(function () {
+
+                $('#listcontent .img').each(function () {
+                    AutoResizeImage(this);
+
+                })
+
+            });
+
+            function AutoResizeImage(objImg) {
+                var img = new Image(); 
+                
+                var w = img.width;
+
+            }
+
+        </script>
 </div>

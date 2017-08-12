@@ -1023,13 +1023,11 @@ body {
 .lditem {
 	height: 320px;
 	width: 180px;
-	float: left;
-	margin-right: 2px;
 	margin-top: 40px
 }
 
 .lditem .lddesc {
-	width: 146px;
+	width: 200px;
 	/* height: 60px; */
 	padding: 0 14px;
 	margin-top: 30px;
