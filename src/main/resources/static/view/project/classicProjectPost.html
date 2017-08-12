@@ -2,6 +2,15 @@
  
         <div>
             <div id="projectcontent" style="height:700px;">
+                <div id="projectinfo" class="">
+                    <div id="pibody">
+                    <div style="color:#fff;font-size:13px;">
+                        <div ng-bind-html="cc.trustedBody"></div>
+                        <a class="close" href=""></a>
+                    </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
                 <div id="rightslider" style="height:700px;">
                     <ul id="rightsliderUl" style="height:700px;">
                         <li ng-repeat="f in fileList" style="background:#585858;overflow-y:auto !important;height:700px;">
@@ -32,15 +41,8 @@
                   </div> -->
                     <div class="clear"></div>
                 </div>
-                <div id="projectinfo" class="" ng-show="contentShow"
-                     ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
-                    <div id="pibody">
-                    <div style="color:#c6c2c2;font-size:13px;width:100%;height:100%;">
-                        <div ng-bind-html="cc.trustedBody"></div>
-                        <a class="close" href=""></a>
-                    </div>
-                    </div>
-                </div>
+         <!--         ng-show="contentShow"
+             ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false" -->
             </div>
         </div>
 </div>
