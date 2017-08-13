@@ -7,6 +7,9 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         var _this = this;
         $scope.pid = $routeParams.id;
         var infoArticleService = new InfoArticleService($resource);
+        var divWidth = 0;
+        divWidth = $('#rightslider').width();
+//        console.log(divWidth);
 
         //监控屏幕高度
         $("#projectcontent").height(document.body.offsetHeight-120);
@@ -20,7 +23,8 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         //获取项目信息
         this.project = {};
         $scope.fileList = [];
-        var sliderInfo = [];
+        $scope.sliderInfo = [];
+        $scope.aaa = 0;
         this.getByIdInfoArticle = function () {
             infoArticleService.getByIdInfoArticle($scope.pid,function(data){
                 _this.project = data.message;
@@ -29,18 +33,23 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                     $scope.fileList[i] = "/upload/" + $scope.fileList[i];
                 }
                 $timeout(function(){
-                    sliderInfo = $('#rightslider ul').bxSlider({pager:false,auto: false,autoHover:false});
+                    $scope.sliderInfo = $('#rightslider ul').bxSlider({pager:false,auto: false,autoHover:false});
+                    console.log($scope.sliderInfo.getCurrentSlide());
                 },1000);
                 _this.trustedBody = $sce.trustAsHtml(data.message.content);
             });
         };
+
+        $scope.$watch('sliderInfo',function(){
+            console.log($scope.aaa);
+        });
 
         $scope.contentShow = false;
 
         this.getByIdInfoArticle();
 
         $scope.selectCarousel = function(index){
-            var selectIndex = (index + 1) * 1536
+            var selectIndex = (index + 1) * divWidth
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
 
@@ -67,7 +76,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                     i = 0;
                 }
             }
-            var selectIndex = (i + 1) * 1536
+            var selectIndex = (i + 1) * divWidth
             $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
         };
 
@@ -95,18 +104,18 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                 }
             }
             var str = $("#rightsliderUl").css('transform');
-            var index = -str.split(",")[4] / 1536 - 1;
-            $scope.sliderCarousel(index,sliderInfo.getSlideCount(),type);
+            var index = -str.split(",")[4] / divWidth - 1;
+            $scope.sliderCarousel(index,$scope.sliderInfo.getSlideCount(),type);
             setTimeout(function(){
                 $scope.moveWheel1 = true;
             },200)
         }
         //给页面绑定滑轮滚动事件
-        if (document.getElementById("rightsliderUl").addEventListener) {//firefox
+        /*if (document.getElementById("rightsliderUl").addEventListener) {//firefox
             document.getElementById("rightsliderUl").addEventListener('DOMMouseScroll', scrollFunc, false);
         }
         //滚动滑轮触发scrollFunc方法  //ie 谷歌
-        document.getElementById("rightsliderUl").onmousewheel = document.getElementById("rightsliderUl").onmousewheel = scrollFunc;
+        document.getElementById("rightsliderUl").onmousewheel = document.getElementById("rightsliderUl").onmousewheel = scrollFunc;*/
 
 
     });
