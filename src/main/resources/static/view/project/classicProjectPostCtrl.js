@@ -24,7 +24,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
         this.project = {};
         $scope.fileList = [];
         $scope.sliderInfo = [];
-        $scope.aaa = 0;
+        $scope.currentFile = 1;
         this.getByIdInfoArticle = function () {
             infoArticleService.getByIdInfoArticle($scope.pid,function(data){
                 _this.project = data.message;
@@ -33,24 +33,41 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                     $scope.fileList[i] = "/upload/" + $scope.fileList[i];
                 }
                 $timeout(function(){
-                    $scope.sliderInfo = $('#rightslider ul').bxSlider({pager:false,auto: false,autoHover:false});
-                    console.log($scope.sliderInfo.getCurrentSlide());
+                    $scope.sliderInfo = $('#rightslider ul').bxSlider(
+                                            {
+                                                pager:false,
+                                                auto: false,
+                                                autoHover:false,
+                                                onSlideAfter: function(e){
+                                                    $scope.currentFile = $scope.sliderInfo.getCurrentSlide();
+                                                    $scope.currentFile = $scope.currentFile + 1;
+                                                    $scope.safeApply($scope.currentFile);
+                                                  }
+                                            });
                 },1000);
                 _this.trustedBody = $sce.trustAsHtml(data.message.content);
             });
         };
 
-        $scope.$watch('sliderInfo',function(){
-            console.log($scope.aaa);
-        });
+        //AngularJS 的安全Apply
+        $scope.safeApply = function(fn) {
+            var phase = this.$root.$$phase;
+            if (phase == '$apply' || phase == '$digest') {
+                if (fn && (typeof(fn) === 'function')) {
+                    fn();
+                }
+            } else {
+                this.$apply(fn);
+            }
+        };
 
         $scope.contentShow = false;
 
         this.getByIdInfoArticle();
 
         $scope.selectCarousel = function(index){
-            var selectIndex = (index + 1) * divWidth
-            $("#rightsliderUl").css('transform','translate3d(-' + selectIndex + 'px, 0px, 0px)');
+            $scope.sliderInfo.goToSlide(index);
+            $scope.currentFile = index + 1;
         };
 
         this.isFocus = false;

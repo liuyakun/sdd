@@ -20,12 +20,12 @@
                 </div>
                 <div id="projectcontrol">
                     <span id="pnum" class="fl">
-                        <span>01</span>
+                        <span>{{currentFile}}</span>
                         / {{fileList.length}}
                     </span>
                     <div id="slidercontrol" class="fl" style="margin-left:100px;">
                         <ul style="width:1012px">
-                            <li ng-repeat="f in fileList" ng-click="selectCarousel($index)">
+                            <li ng-repeat="f in fileList" ng-class="{active:currentFile==$index+1}" ng-click="selectCarousel($index)">
                                 <a href="">
                                     <img ng-src="{{f}}" width="90" height="58" />
                                     <div class="slidemask"></div>
