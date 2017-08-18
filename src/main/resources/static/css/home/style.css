@@ -540,7 +540,7 @@ body {
 	position: absolute;
 	left: 0;
 	top: 0;
-	z-index:10000;
+	z-index:100;
 }
 
 .leie9 #projectinfo {
