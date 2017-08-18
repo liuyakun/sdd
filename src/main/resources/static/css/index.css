@@ -198,3 +198,24 @@ a.post-info:hover span{color:#fff;}
 }
 .index-block-tjcar span.one .inner h5{font-size:15px !important;color:#ddd;line-height:20px;font-style:normal;font-weight:normal;}
 .index-block-tjcar span.one .inner h6{font-size:12px !important;color:#999;line-height:20px;font-style:normal;font-weight:normal;}
+
+::-webkit-scrollbar {
+width: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+background-color: #fff;
+} /* 滚动条的内层滑轨背景颜色 */
+
+::-webkit-scrollbar-track {
+background-color: #fff;
+} /* 滚动条的外层滑轨背景颜色 */
+
+::-webkit-scrollbar-thumb {
+background-color: #d4d8e2;
+} /* 滚动条的内层滑块颜色 */
+
+::-webkit-scrollbar-button {
+background-color: #fff;
+display: none;
+}
