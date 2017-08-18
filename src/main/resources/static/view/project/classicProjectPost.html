@@ -1,55 +1,48 @@
 <div ng-controller="classicProjectPostCtrl as cc">
- 
-        <div>
-            <div id="projectcontent" style="height:700px;">
-                <div id="projectinfo" class="">
-                    <div id="pibody">
+
+    <div>
+        <div id="projectcontent" style="height:864px;">
+            <div id="projectinfo" class="">
+                <div id="pibody">
                     <div style="color:#fff;font-size:13px;">
                         <div ng-bind-html="cc.trustedBody"></div>
                         <a class="close" href=""></a>
                     </div>
-                    </div>
                 </div>
-                <div class="clear"></div>
-                <div id="rightslider">
-                    <ul id="rightsliderUl" >
-                        <li ng-repeat="f in fileList" style="background:#585858;overflow-y:auto !important;h">
-                            <img ng-src="{{f}}" width="" height="1000" />
-                        </li>
-                    </ul>
-                </div>
-                <div id="projectcontrol">
+            </div>
+            <div class="clear"></div>
+            <div id="rightslider" style="height:864px;">
+                <ul id="rightsliderUl" style="height:864px;">
+                    <li ng-repeat="f in fileList" style="background:#585858;overflow-y:auto !important;height:864px;">
+                        <img ng-src="{{f}}" width="" height="1000" />
+                    </li>
+                </ul>
+            </div>
+            <div id="projectcontrol">
                     <span id="pnum" class="fl">
                         <span>{{currentFile}}</span>
                         / {{fileList.length}}
                     </span>
-                    <div id="slidercontrol" class="fl" style="margin-left:100px;">
-                        <ul style="width:1012px">
-                            <li ng-repeat="f in fileList" ng-class="{active:currentFile==$index+1}" ng-click="selectCarousel($index)">
-                                <a href="">
-                                    <img ng-src="{{f}}" width="90" height="58" />
-                                    <div class="slidemask"></div>
-                                    <div class="slidebord"></div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                  <!--   <div id="pcright" class="fr" ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
-                      <a href="" id="pcinfo" class="post-info">
-                          <span ng-click="contentShow=true">查看介绍</span>
-                      </a>
-                  </div> -->
-                    <div class="clear"></div>
+                <div id="slidercontrol" class="fl" style="margin-left:100px;">
+                    <ul style="width:1012px">
+                        <li ng-repeat="f in fileList" ng-class="{active:currentFile==$index+1}" ng-click="selectCarousel($index)">
+                            <a href="">
+                                <img ng-src="{{f}}" width="90" height="58" />
+                                <div class="slidemask"></div>
+                                <div class="slidebord"></div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-         <!--         ng-show="contentShow"
-             ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false" -->
+                <!--   <div id="pcright" class="fr" ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false">
+                    <a href="" id="pcinfo" class="post-info">
+                        <span ng-click="contentShow=true">查看介绍</span>
+                    </a>
+                </div> -->
+                <div class="clear"></div>
             </div>
+            <!--         ng-show="contentShow"
+                ng-mouseover="cc.isFocus=true" ng-mouseleave="cc.isFocus=false" -->
         </div>
-
-        <div style="position:fixed;width:100%;height:100%;top:0;left:0;overflow-y:auto;z-index:100000;background:#000;opacity:0.9;"></div>
-        <div style="position:fixed;width:100%;height:100%;top:0;left:0;overflow-y:auto;z-index:100001;">
-            <div style="width:90%;margin:50px auto;">
-                <img src="http://www.geaei.net/upload/150303312792636435.jpg" style="width:100%;height:auto;">
-                <div style="position:absolute;margin-top:50px;right:100px;color:#ccc;text-align:center;"> 任意点击即可关闭。</div>
-            </div>
-        </div>
+    </div>
+</div>
