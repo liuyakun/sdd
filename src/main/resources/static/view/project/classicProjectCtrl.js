@@ -83,7 +83,8 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
 
         //-----------------------------------------------跳转到详情页面---------------------------------
         $scope.jumpDefault = function (id) {
-            $location.path("/web/project/classicProject/post/" + id);
+            window.location.href = "/web/project/classicProject/post/" + id;
+//            $location.path("/web/project/classicProject/post/" + id);
         };
 
         $scope.pageInfoArticleByType = function(typeId,twoTypeId,type){
