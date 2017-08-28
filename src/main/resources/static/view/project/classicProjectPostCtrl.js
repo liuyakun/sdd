@@ -3,6 +3,7 @@
  */
 define(['../../script/sdd','jquery','../../script/service/infoArticleService'],function(module,$,InfoArticleService){
     module.controller('classicProjectPostCtrl',function($resource,$scope,$rootScope,$timeout,$location,$routeParams,$sce){
+        console.log('classicProjectPostCtrl');
 
         var _this = this;
         $scope.pid = $routeParams.id;
