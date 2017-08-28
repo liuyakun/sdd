@@ -1,6 +1,6 @@
 define(['../script/sdd','jquery','../script/service/userService'],function(module, $,UserService){
     module.controller("indexCtrl",function($rootScope,$scope,$http,$resource,$location,commonService,$route,$timeout) {
-        console.log("欢迎加入");
+        // console.log("欢迎加入");
 
 
         //初始化路径
