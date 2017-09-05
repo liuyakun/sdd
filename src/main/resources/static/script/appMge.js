@@ -31,7 +31,7 @@ requirejs.config({
 require
 (
     [
-        'angular','mge','../viewMge/indexMgeCtrl','../script/service/mgeService','../script/filter/filterMge'
+        'angular','../viewMge/indexMgeCtrl','../script/service/mgeService','../script/filter/filterMge'
     ],
     function(angular)
     {
