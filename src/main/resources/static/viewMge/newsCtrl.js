@@ -3,7 +3,7 @@
  */
 define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleService',
     '../viewMge/myPagination','ajaxfileupload'],function(module, $, zeroClipboard, InfoArticleService){
-    module.controller('newsCtrl',function($resource,$scope,$rootScope,$timeout,$location,mgeService, $route){
+    module.controller('newsCtrl',function($resource,$scope,$rootScope,$timeout,$location,mgeService, $route,$http){
         // console.log("news");
         window['ZeroClipboard'] = zeroClipboard;
         var infoArticleService = new InfoArticleService($resource);
@@ -96,8 +96,11 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //--------------------------------------------新增-------------------------------------------------------
         //点击新增
         $("#addShow").hide();
+        var arrFiles = [];
         this.checkAdd = function(){
+            arrFiles = [];
             this.titleShow = false;
+            this.typeIdShow = false;
             this.contentShow = false;
             //---------------------清空file值---------------------------
             // $("#updatePreview_1").attr("src","");
@@ -135,15 +138,21 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 this.titleShow = true;
                 return;
             }
+            if($("#addSelect").val() == "?"){
+                this.typeIdShow = true;
+                return;
+            }
+            this.addNewsData.typeId = Number($("#addSelect").val()) + 1;
             this.addNewsData.infoId = 1;
             this.addNewsData.content =ue.getContent();
             if(this.addNewsData.content ===""){
                 this.contentShow = true;
                 return;
             }
+            $('#loadShow').show();
             infoArticleService.addInfoArticle(this.addNewsData,function(data){
                 if(data.status === "true"){
-                    _this.uploadFile(data.message,1);
+                    _this.uploadFile(data.message,1,null);
                 }else{
                     console.log(data);
                 }
@@ -156,17 +165,46 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         //点击修改
         $("#updateShow").hide();
         this.checkUpdate = function (updateData) {
+            arrFiles = [];
             this.modifyLeftLength = 100;
             this.titleShow = false;
+            this.typeIdShow = false;
             this.contentShow = false;
             this.modifyLeftLength = this.maxLength - updateData.title.length;
             $scope.updateData = angular.copy(updateData);
+            $scope.updateFilePath = angular.copy(updateData.filePath);
             $scope.pathArray = [];
             $scope.pathArray = updateData.filePath.split("&");
             var dd2 = document.getElementById("dd2");
+            dd2.innerHTML = "";
             for (var i = 0; i < $scope.pathArray.length; i++) {
-                dd2.innerHTML += "<div style='float:left;padding-right: 20px;' ><img style='width: 180px;height: 210px;' src='/upload/" + $scope.pathArray[i] + "'  /> </div>";
+                var $img = $("<div class='lookimg'> " +
+                    "<img class='uploadImg' src='"+ "/upload/" + $scope.pathArray[i] +"'/> " +
+                    "</div>");
+                //创建删除按钮
+                var IMG_DELBTN = document.createElement("div");
+                IMG_DELBTN.setAttribute("class", "lookimg_delBtn");
+                IMG_DELBTN.setAttribute("fileName", $scope.pathArray[i]);
+                IMG_DELBTN.innerHTML = "移除";
+                $img.append(IMG_DELBTN);
+                $img.appendTo(dd2);
+                //删除按钮移入移出效果
+                $img.mouseover(function(){
+                    if ($(this).attr("ISUP") != "1")
+                        $(this).children(".lookimg_delBtn").eq(0).css("display", "block");
+                });
+                $img.mouseleave(function(){
+                    $(this).children(".lookimg_delBtn").eq(0).css("display", "none");
+                });
+                // dd2.innerHTML += "<div style='float:left;padding-right: 20px;' ><img style='width: 180px;height: 210px;' src='/upload/" + $scope.pathArray[i] + "'  /> </div>";
             }
+
+            $(".lookimg_delBtn").click(function(){
+                $(this).parent().remove();//移除图片显示
+                // console.log($(this).attr("fileName"));
+                $scope.removePictures($(this).attr("fileName"),2, $scope.pathArray);
+            });
+
             ueModify.ready(function(){
                 ueModify.setContent(updateData.content);
             });
@@ -179,7 +217,8 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
         this.updateReturn = function(){
             $("#listShow").slideDown("slow");
             $("#updateShow").slideUp("slow");
-            $route.reload();
+
+//            $route.reload();
         };
 
         UE.delEditor('updateContainer');
@@ -201,131 +240,161 @@ define(['../script/mge','jquery','ZeroClipboard','../script/service/infoArticleS
                 this.contentShow = true;
                 return;
             }
+            $('#loadShow').show();
             infoArticleService.updateInfoArticle($scope.updateData,function(data){
                 if(data.status === "true"){
                     var docObj2 = document.getElementById("doc_2");
                     if(docObj2.files.length !== 0){
-                        _this.uploadFile($scope.updateData.id,2);
+                        _this.uploadFile($scope.updateData.id,2,$scope.updateFilePath);
                     }
                     _this.pageInfoArticle();
                     _this.updateReturn();
                 }else{
                     console.log(data);
                 }
+                $('#loadShow').hide(200);
             });
         };
 
         //---------------------------------------------------上传图片-------------------------------------------------
+        var UP_IMGCOUNT = 0;//上传图片张数记录
         $scope.setImagePreviewList = function (num) {
-
             var docObj = document.getElementById("doc_"+num);
-
             var dd = document.getElementById("dd"+num);
-
-            dd.innerHTML = "";
-
+            // dd.innerHTML = "";
             var fileList = docObj.files;
-
             for (var i = 0; i < fileList.length; i++) {
-
-
-
-                dd.innerHTML += "<div style='float:left;padding-right: 20px;' > <img id='img" + i + "'  /> </div>";
-
-                var imgObjPreview = document.getElementById("img"+i);
-
                 if (docObj.files && docObj.files[i]) {
-
-                    //火狐下，直接设img属性
-
-                    imgObjPreview.style.display = 'block';
-
-                    imgObjPreview.style.width = '180px';
-
-                    imgObjPreview.style.height = '210px';
-
-                    //imgObjPreview.src = docObj.files[0].getAsDataURL();
-
-                    //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-
-                    imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
-
+                    var $img = $("<div class='lookimg'> " +
+                        "<img class='uploadImg' src='"+ window.URL.createObjectURL(docObj.files[i]) +"'/> " +
+                        "</div>");
+                    //创建删除按钮
+                    var IMG_DELBTN = document.createElement("div");
+                    IMG_DELBTN.setAttribute("class", "lookimg_delBtn");
+                    IMG_DELBTN.setAttribute("fileName", fileList[i].name);
+                    IMG_DELBTN.innerHTML = "移除";
+                    $img.append(IMG_DELBTN);
+                    $img.appendTo(dd);
+                    arrFiles.push(fileList[i]);
+                    //删除按钮移入移出效果
+                    $img.mouseover(function(){
+                        if ($(this).attr("ISUP") != "1")
+                            $(this).children(".lookimg_delBtn").eq(0).css("display", "block");
+                    });
+                    $img.mouseleave(function(){
+                        $(this).children(".lookimg_delBtn").eq(0).css("display", "none");
+                    });
                 }
-
                 else {
-
                     //IE下，使用滤镜
-
                     docObj.select();
-
                     var imgSrc = document.selection.createRange().text;
-
                     alert(imgSrc)
-
                     var localImagId = document.getElementById("img" + i);
-
                     //必须设置初始大小
-
                     localImagId.style.width = "180px";
-
                     localImagId.style.height = "210px";
-
                     //图片异常的捕捉，防止用户修改后缀来伪造图片
-
                     try {
-
                         localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-
                         localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-
                     }
-
                     catch (e) {
-
                         alert("您上传的图片格式不正确，请重新选择!");
-
                         return false;
-
                     }
-
-                    imgObjPreview.style.display = 'none';
-
                     document.selection.empty();
-
                 }
-
             }
+            $(".lookimg_delBtn").click(function(){
+                $(this).parent().remove();//移除图片显示
+                $scope.removePictures($(this).attr("fileName"),1);
+            });
             return true;
-
         };
 
+        // 移除图片
+        $scope.removePictures = function(fileName,type,pathArray){
+            if(type===1){
+                for (var i=0; i<arrFiles.length; i++) {
+                    if(arrFiles[i].name === fileName){
+                        arrFiles.splice(i,1);
+                    }
+                }
+            }else {
+                console.log(pathArray.length);
+                console.log(fileName);
+                for (var i=0; i<pathArray.length; i++) {
+                    if(pathArray[i] === fileName){
+                        pathArray.splice(i,1);
+                    }
+                }
+                $scope.updateFilePath = pathArray.join("&");
+                $scope.updateData.filePath = $scope.updateFilePath;
+            }
+        };
 
         //上传图片 num 1:add 2:update
-        this.uploadFile = function (id, num) {
-            var docObj = document.getElementById("doc_" + num);
-            if (docObj.files[0] != undefined) {
-                ajaxFileUpload(id);
-            } else {
-                alert("未选择上传文件，请选择后再上传！");
+        /*this.uploadFile = function (id, num) {
+         var docObj = document.getElementById("doc_" + num);
+         if (docObj.files[0] != undefined) {
+         ajaxFileUpload(id);
+         } else {
+         alert("未选择上传文件，请选择后再上传！");
+         }
+         this.data = {id:id};
+         function ajaxFileUpload(id) {
+         $.ajaxFileUpload({
+         url: '/api/project/'+id+'/file',
+         type: 'post',
+         secureuri: false, //是否需要安全协议，一般设置为false
+         fileElementId: 'doc_' + num, // 上传文件的id、name属性名
+         dataType: 'Json', //返回值类型，一般设置为json、application/json
+         data: _this.data,//一同上传的数据
+         success: function (data,status) {
+         console.log(data);
+         if(num === 1){
+         _this.addReturn();
+         }else{
+         _this.updateReturn();
+         }
+         $('#loadShow').hide(200);
+         _this.pageInfoArticle();
+         },
+         error: function (data, status, e) {
+         alert(JSON.stringify(data));
+         }
+         });
+         }
+         };*/
+
+        this.uploadFile = function(id,num,filePath) {
+            console.log(filePath);
+            var fd = new FormData();
+            for (var i=0; i<arrFiles.length; i++) {
+                fd.append("file", arrFiles[i]);
+            }
+            if(filePath){
+                fd.append("updateFilePath",filePath);
             }
             this.data = {id:id};
-            function ajaxFileUpload(id) {
-                $.ajaxFileUpload({
-                    url: '/api/project/'+id+'/file',
-                    type: 'post',
-                    secureuri: false, //是否需要安全协议，一般设置为false
-                    fileElementId: 'doc_' + num, // 上传文件的id、name属性名
-                    dataType: 'Json', //返回值类型，一般设置为json、application/json
-                    data: _this.data,//一同上传的数据
-                    success: function (data,status) {
-                        console.log(data);
-                        $route.reload();
-                    },
-                    error: function (data, status, e) {
-                        alert(JSON.stringify(data));
-                    }
-                });
-            }
+            $http({
+                method:'POST',
+                url:'/api/project/'+id+'/file',
+                data: fd,
+                headers: {'Content-Type':undefined},
+                transformRequest: angular.identity
+            }).success( function ( response )
+            {
+                if(num === 1){
+                    _this.addReturn();
+                }else{
+                    _this.updateReturn();
+                }
+                $('#loadShow').hide(200);
+                _this.pageInfoArticle();
+            });
+
         };
 
 

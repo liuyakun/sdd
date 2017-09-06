@@ -34,6 +34,7 @@ public class FileController {
     @RequestMapping(value = "/project/{id}/file", method= RequestMethod.POST)
     public ObjectResult uploadFile(@PathVariable("id") int id,
                                    @RequestParam(value = "file", required = false) MultipartFile[] files,
+                                   @RequestParam(value = "updateFilePath", required = false) String updateFilePath,
                                    HttpServletRequest request) {
         //设置相对路径
         String realPath = request.getSession().getServletContext().getRealPath("/upload");
@@ -67,6 +68,9 @@ public class FileController {
             InfoArticle infoArticle = infoArticleRepository.findOne(id);
             if (infoArticle == null) {
                 return  new ObjectResult("false","上传失败");
+            }
+            if(updateFilePath!=null){
+                filePath = updateFilePath + "&" + filePath;
             }
             infoArticle.setFilePath(filePath);
             infoArticleRepository.save(infoArticle);

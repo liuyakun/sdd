@@ -139,3 +139,54 @@ h6,.x-h6{font-size:12px;font-weight:normal;}
 .x-loading{width:60px;height:60px;}
 .x-loading img{width:60px;height:60px;}
 .x-loadingfont{font-size:16px;line-height:50px;text-align:center;color:#ccc;}
+
+.uploadImg{display:block;width: 180px !important;height: 210px !important;}
+
+/*删除按钮样式*/
+.lookimg_delBtn {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 180px !important;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #808080;
+    opacity: 0.8;
+    color: white;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    display: none;
+    cursor: pointer;
+}
+
+/*删除按钮移入移出效果*/
+.lookimg_delBtn:hover {
+    opacity: 1;
+}
+
+/*单个图片预览模块样式*/
+.lookimg {
+    position: relative;
+    float:left;
+    padding-right: 20px;
+}
+.lookimg img {
+    width: 100%;
+    height: 100%;
+}
+
+.add-img {
+    display: block;
+    width: 190px;
+    height: 180px;
+}
+.file{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}
