@@ -75,6 +75,7 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
                 _this.projectList = data.message;
                 for (var i = 0; i < _this.projectList.length; i++) {
                     _this.projectList[i].defaultPath = "/upload/" + _this.projectList[i].filePath.split("&")[0];
+                    _this.projectList[i].titleName = $scope.getTitleName(_this.projectList[i].typeId, _this.projectList[i].twoTypeId);
                 }
             });
         };
@@ -103,6 +104,22 @@ define(['../../script/sdd','jquery','../../script/service/infoArticleService'],f
             _this.searchData.twoTypeId = twoTypeId;
             _this.pageInfoArticle(type);
         };
+
+        // 获取名称
+        $scope.getTitleName = function(typeId,twoTypeId){
+            let titleName = "";
+            if (typeId === 2) return '城市规划';
+            $scope.projectTypeList.forEach(item => {
+                if (typeId !== 2) {
+                    item.childrenList.forEach(it => {
+                        if (it.id === twoTypeId) {
+                            titleName = it.typeName;
+                        }
+                    });
+                }
+            });
+            return titleName;
+        }
 
     });
 });
